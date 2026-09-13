@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   backdrop.className = "loading-backdrop";
   backdrop.style.cssText =
     "position:absolute;top:0;left:0;width:100%;height:100%;" +
-    "background-image:url('/assets/scanners_logo.png');" +
+    "background-image:url('/assets/background.jpg');" +
     "background-position:center;background-size:cover;" +
     "filter:blur(14px);transform:scale(1.08);opacity:0;";
   loadingScreen.appendChild(backdrop);

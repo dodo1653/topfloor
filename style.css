@@ -2060,6 +2060,7 @@ img {
   color: #ffd22d;
   filter: none;
   text-shadow: 0 0 14px;
+  -webkit-text-stroke-color: #ffd22d;
 }
 
 /* -- tight section rhythm: even ~5rem joins instead of big voids -- */
@@ -2143,5 +2144,22 @@ img {
   font-weight: 700;
   letter-spacing: 1px;
   text-shadow: none;
+}
+
+/* card titles: distress texture back (edge chips + specks in the ink) */
+.clip-step .clip-step-title,
+.title .text-block-4,
+.title .text-block-4-copy-copy,
+.title .text-block-4-copy-copy-copy {
+  filter: url("#tfDistressSmall");
+}
+
+/* 3) IS THIS YOU section: background image under a dark veil */
+.section-2 {
+  background-image: linear-gradient(rgba(10, 10, 12, .84), rgba(10, 10, 12, .84)), url("/assets/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
