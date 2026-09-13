@@ -1759,3 +1759,151 @@ img {
   text-transform: uppercase;
   filter: url("#tfDistress");
 }
+
+/* ==== Restrained print system v2 ====
+   Pixel (blocky) voice: navbar + small labels/chips ONLY.
+   Everything else: site font with deliberate tracking/weight/stamps. */
+@font-face {
+  font-family: Tfpx;
+  src: url("assets/RasterForge.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* -- navbar: pixel labels -- */
+.link-block > div {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+.navbar .button {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  box-shadow: 4px 4px #000;
+}
+
+/* -- chip labels: pixel stamps with // prefix -- */
+.minititle .text-block-2,
+.minititle-copy .text-block-2 {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  color: #ffffffcc;
+}
+.minititle .text-block-2::before,
+.minititle-copy .text-block-2::before {
+  content: "// ";
+  color: var(--white);
+  opacity: .8;
+}
+
+/* -- footer labels: pixel -- */
+.social-handle {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+.text-block-6 {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  font-size: 15px;
+  letter-spacing: 2.5px;
+}
+
+/* -- everything below: site font, deliberately styled -- */
+
+/* pain-point statements: weight + tracking for punch (color untouched) */
+.paragraph {
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+/* section intro paragraphs */
+.paragraph-2 {
+  letter-spacing: 1.5px;
+  font-weight: 400;
+  color: #ffffffe6;
+}
+
+/* feature card titles: heavy + tracked */
+.text-block-4 {
+  font-weight: 900;
+  font-stretch: 110%;
+  letter-spacing: 1.5px;
+  font-size: 18px;
+}
+
+/* feature descriptions */
+.paragraph-3 {
+  letter-spacing: 1px;
+  color: #ffffffd9;
+}
+
+/* pricing: display-weight numerals, tracked descriptor, stamped plan tag */
+.text-block-5 {
+  letter-spacing: 1px;
+}
+.text-span-2 {
+  font-weight: 900;
+  font-stretch: 125%;
+  letter-spacing: 0;
+  font-size: 46px;
+}
+.text-span-103 {
+  letter-spacing: 1px;
+  font-size: 14px;
+  line-height: 22px;
+}
+.text-span-104 {
+  letter-spacing: 2px;
+  font-size: 13px;
+  border: 3px solid #0f0f0f30;
+  padding: 4px 10px;
+  display: inline-block;
+}
+
+/* clip program: heavy step titles, quiet notes, stamped numbers */
+.clip-step-title {
+  font-weight: 900;
+  font-stretch: 110%;
+  letter-spacing: 1.5px;
+  font-size: 20px;
+}
+.clip-step-desc {
+  letter-spacing: 1px;
+}
+.clip-note {
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+.clip-num {
+  font-weight: 900;
+  font-stretch: 125%;
+  font-size: 44px;
+}
+.clip-warning {
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: 4px solid #ffd22d;
+  box-shadow: 6px 6px #000;
+}
+
+/* buttons outside navbar: same pixel label language as nav */
+.button {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  box-shadow: 4px 4px #000;
+}
+
+/* punchline heading gets the real distress */
+.text-block-copy-copy-copy-copy-copy {
+  filter: url("#tfDistress");
+}
+
+@media screen and (max-width: 767px) {
+  .paragraph { letter-spacing: .5px; }
+  .text-span-2 { font-size: 40px; }
+  .clip-warning { font-size: 12px; }
+}
