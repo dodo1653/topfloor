@@ -1939,3 +1939,76 @@ img {
   color: #fff;
   text-shadow: 0 0 14px #ffffff88;
 }
+
+/* ==== v5: physical print degradation — ink erosion inside the glyphs ==== */
+
+/* journey card: works inside a flow section (75% height collapsed) */
+.scannersacademy-block {
+  position: relative;
+  height: auto;
+  min-height: 480px;
+  padding: 4.5rem 2.5rem;
+  gap: 22px;
+}
+
+/* display headings: pure white ink + baked erosion mask (the mask REMOVES ink:
+   specks, worn patches, scratches, density clouds) — applied on a mid-size tile
+   so damage reads at every heading scale */
+@supports ((mask-image: url("assets/erosion.png")) or (-webkit-mask-image: url("assets/erosion.png"))) {
+  .text-block,
+  .text-block-3,
+  .text-block-copy,
+  .text-block-copy-copy,
+  .text-block-copy-copy-copy,
+  .text-block-copy-copy-copy-copy,
+  .text-block-copy-copy-copy-copy-copy {
+    background-image: none;
+    -webkit-text-fill-color: #ffffff;
+    color: #ffffff;
+    -webkit-mask-image: url("assets/erosion.png");
+    mask-image: url("assets/erosion.png");
+    -webkit-mask-size: 420px 420px;
+    mask-size: 420px 420px;
+  }
+}
+
+/* display text: NO glow, NO halo, NO shadow — the filter's faint bloom is the only light */
+.text-block,
+.text-block-3,
+.text-block-copy,
+.text-block-copy-copy,
+.text-block-copy-copy-copy,
+.text-block-copy-copy-copy-copy,
+.text-block-copy-copy-copy-copy-copy {
+  text-shadow: none;
+}
+
+/* ink weight: thick strokes like Druk Wide Heavy */
+.text-block,
+.text-block-3,
+.text-block-copy,
+.text-block-copy-copy,
+.text-block-copy-copy-copy,
+.text-block-copy-copy-copy-copy,
+.text-block-copy-copy-copy-copy-copy {
+  -webkit-text-stroke: 3px #ffffff;
+}
+
+
+/* journey heading fits its card */
+.scannersacademy-block .text-block-copy {
+  font-size: 84px;
+  line-height: 80px;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .scannersacademy-block .text-block-copy {
+    font-size: 38px;
+    line-height: 36px;
+  }
+  .scannersacademy-block {
+    min-height: 380px;
+    padding: 3rem 1.5rem;
+  }
+}

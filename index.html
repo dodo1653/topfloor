@@ -206,9 +206,10 @@
             <div class="scannersacademy-block">
                 <img src="/assets/money-flying.png" loading="lazy" width="200" alt="" class="image-8"/>
                 <div class="minititle-copy">
-                    <div class="text-block-2">Start your journey WITH TOP FLOOR AND SKIP the mistakes.</div>
+                    <div class="text-block-2">start your journey</div>
                 </div>
-                <a href="https://discord.gg/topfloor" target="_blank" class="button w-button">explore the discord</a>
+                <div class="text-block-copy">Explore the Discord</div>
+                <a href="https://discord.gg/topfloor" target="_blank" class="button w-button">join the topfloor discord</a>
             </div>
         </section>
         <section class="section-6">
@@ -286,7 +287,7 @@
                 <!-- edge erosion: irregular bites along the contour, worst at sharp corners -->
                 <feMorphology in="warped" operator="dilate" radius="2" result="band"/>
                 <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="3" seed="21" result="edgeNoise"/>
-                <feColorMatrix in="edgeNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.4 2.4 2.4 0 -5.7" result="edgeCut"/>
+                <feColorMatrix in="edgeNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.4 2.4 2.4 0 -5.35" result="edgeCut"/>
                 <feComposite in="edgeCut" in2="band" operator="in" result="edgeMask"/>
                 <feGaussianBlur in="edgeMask" stdDeviation="0.6" result="edgeFeather"/>
                 <feComposite in="warped" in2="edgeFeather" operator="out" result="base1"/>
@@ -307,7 +308,7 @@
                 <feComposite in="base3" in2="scratches" operator="out" result="base4"/>
                 <!-- uneven ink density: patchy gray veil, never uniform -->
                 <feTurbulence type="fractalNoise" baseFrequency="0.22" numOctaves="2" seed="12" result="densNoise"/>
-                <feColorMatrix in="densNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.35 0.35 0.35 0 -0.85" result="densCut"/>
+                <feColorMatrix in="densNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.42 0.42 0.42 0 -0.85" result="densCut"/>
                 <feFlood flood-color="#000000" result="black"/>
                 <feComposite in="black" in2="base4" operator="in" result="blackInShape"/>
                 <feComposite in="blackInShape" in2="densCut" operator="in" result="densityVeil"/>
@@ -315,13 +316,13 @@
                     <feMergeNode in="base4"/>
                     <feMergeNode in="densityVeil"/>
                 </feMerge>
-                <!-- overexposed photocopy feel: slight softness + white bloom -->
-                <feGaussianBlur in="lettersRaw" stdDeviation="0.45" result="letters"/>
-                <feMorphology in="base4" operator="dilate" radius="4" result="bloomShape"/>
-                <feGaussianBlur in="bloomShape" stdDeviation="6" result="bloomBlur"/>
+                <!-- overexposed photocopy feel: faint softness + subtle bloom, never a halo -->
+                <feGaussianBlur in="lettersRaw" stdDeviation="0.2" result="letters"/>
+                <feMorphology in="base4" operator="dilate" radius="3" result="bloomShape"/>
+                <feGaussianBlur in="bloomShape" stdDeviation="4" result="bloomBlur"/>
                 <feFlood flood-color="#ffffff" result="white"/>
                 <feComposite in="white" in2="bloomBlur" operator="in" result="bloomWhite"/>
-                <feColorMatrix in="bloomWhite" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.26 0" result="bloom"/>
+                <feColorMatrix in="bloomWhite" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.22 0" result="bloom"/>
                 <feMerge>
                     <feMergeNode in="bloom"/>
                     <feMergeNode in="letters"/>
