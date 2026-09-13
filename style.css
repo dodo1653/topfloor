@@ -2033,3 +2033,82 @@ img {
     padding: 3rem 1.5rem;
   }
 }
+
+/* ==== v6: gold punchline, footer overhaul, tighter section rhythm ==== */
+
+/* -- punchline heading: gold/gold -- */
+.text-block-copy-copy-copy-copy-copy {
+  background-image: none !important;
+  -webkit-text-fill-color: #ffd22d;
+  color: #ffd22d;
+  text-shadow: 0 0 14px;
+}
+
+/* -- tight section rhythm: even ~5rem joins instead of big voids -- */
+.section-3 { min-height: auto; padding: 5rem 0 5.5rem; }
+.section-4 { min-height: auto; padding: 5.5rem 0 5rem; }
+.section-5 { min-height: auto; padding: 4.5rem 0 5.5rem; }
+.section-6 { min-height: auto; padding: 5rem 0 5.5rem; }
+.section-8 { padding: 5.5rem 0 5rem; }
+.footer {
+  height: auto;
+  min-height: 0;
+  margin-top: 4rem;
+  padding: 5rem 4rem;
+}
+
+/* -- footer layout: left brand, right socials pill; responsive stack -- */
+.footer-data {
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+.socials {
+  position: static;
+  margin-left: auto;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-content: center;
+  gap: 14px 26px;
+  padding: .8rem 1.5rem;
+  background: #0f0f0f14;
+  border: 3px solid #00000030;
+  box-shadow: 4px 4px #00000026;
+  max-width: 640px;
+}
+.footer-data > img {
+  width: 60px;
+  flex-shrink: 0;
+}
+.social-pair { gap: 9px; padding: 2px 4px; }
+.social-handle {
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.image-10 { width: 24px; height: 24px; object-fit: contain; }
+@media (max-width: 767px) {
+  .socials {
+    margin-left: 0;
+    justify-content: flex-start;
+    max-width: none;
+    width: 100%;
+  }
+}
+
+/* -- pricing card text: bold, strong, ink-stamped feel -- */
+.text-span-103 {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: .5px;
+  color: #0f0f0fcf;
+}
+.text-span-104 {
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  border: 3px solid #0f0f0f45;
+  padding: 4px 12px;
+}
+.text-block-5 { font-weight: 700; }
