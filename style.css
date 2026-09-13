@@ -1802,8 +1802,12 @@ img {
   text-shadow: 0 0 10px;
 }
 
-/* -- clip program cards: breathing room -- */
+/* -- clip program cards: dark cards with white ink (matches feature grid) -- */
 .clip-step {
+  background-color: var(--black);
+  border: 5px solid var(--white);
+  border-color: var(--white) #fff #fff var(--white);
+  box-shadow: 7px 7px #000000b3;
   padding: 2.25rem 2rem 2.5rem;
   gap: 14px;
 }
@@ -1859,6 +1863,11 @@ img {
 .text-span-2 {
   color: #ffd22d;
   text-shadow: 0 0 14px;
+}
+/* light pricing card: numerals must be dark ink (yellow vanishes on white) */
+.div-block-2-copy .text-span-2 {
+  color: var(--black);
+  text-shadow: none;
 }
 .text-block-6 {
   color: #ffd22d;
