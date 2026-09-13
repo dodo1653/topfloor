@@ -2163,19 +2163,21 @@ img {
   background-attachment: fixed;
 }
 
-/* ==== hero section: clean distressed text — no mask grid, thinner stroke ==== */
-/* The SVG filter (#tfDistress) handles all the worn texture.
-   The erosion.png mask was creating visible tile grid lines.
-   Text-stroke reduced from 3px → 1px so edges stay organic. */
+/* ==== hero section: distressed text with seamless erosion mask ==== */
+/* SVG filter (#tfDistress) = edge warp, stains, specks, scratches, bloom.
+   erosion.png mask = internal ink erosion (now seamless, no grid lines).
+   Text-stroke at 1px keeps weight without hard edges. */
 
 .text-block,
 .text-block-copy-copy {
-  -webkit-mask-image: none;
-  mask-image: none;
+  -webkit-mask-image: url("assets/erosion.png");
+  mask-image: url("assets/erosion.png");
+  -webkit-mask-size: 600px 600px;
+  mask-size: 600px 600px;
   -webkit-text-stroke: 1px #ffffff;
 }
 
-/* "top floor" line — slightly thinner stroke for contrast with the line above */
+/* "top floor" — slightly thicker stroke for visual weight contrast */
 .text-block-copy-copy {
   -webkit-text-stroke: 1.5px #ffffff;
   text-shadow: 0 0 30px rgba(255, 255, 255, .15);
