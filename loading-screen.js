@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const isPhone = window.innerWidth < 768;
-
-  // Full-screen welcome overlay
+  // Full-screen welcome overlay — backdrop texture only, no icon
   const loadingScreen = document.createElement("div");
   loadingScreen.id = "loading-screen";
   loadingScreen.style.cssText =
@@ -10,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "background-color:#05060a;overflow:hidden;";
   document.body.appendChild(loadingScreen);
 
-  // Backdrop: the X profile picture, blurred and very dim (quiet texture, not a feature)
+  // Backdrop: the X profile picture, blurred and very dim (quiet texture)
   const backdrop = document.createElement("div");
   backdrop.className = "loading-backdrop";
   backdrop.style.cssText =
@@ -20,22 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
     "filter:blur(14px);transform:scale(1.08);opacity:0;";
   loadingScreen.appendChild(backdrop);
 
-  // Icon: big square profile picture, same language as the navbar mark
-  const icon = document.createElement("img");
-  icon.src = "/assets/scanners_logo.png";
-  icon.className = "loading-icon";
-  icon.style.cssText =
-    "position:relative;width:" + (isPhone ? "240px" : "340px") + ";height:auto;" +
-    "border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.6);" +
-    "opacity:0;transform:scale(.94) translateY(10px);will-change:transform,opacity;";
-  loadingScreen.appendChild(icon);
-
   // Lock scroll while the welcome screen is up
   document.body.style.overflow = "hidden";
   document.documentElement.style.overflow = "hidden";
 
-  // Cinematic but quick: backdrop breathes in, icon fades up, one short breath,
-  // brief hold, fade out together, slide away. (~3s total)
+  // Cinematic but quick: backdrop breathes in, brief hold, fade out, slide away (~2s)
   const tl = gsap.timeline({
     onComplete: () => {
       loadingScreen.remove();
@@ -47,11 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 
-  tl.to(backdrop, { opacity: 0.1, duration: 0.6, ease: "power2.out" }, 0)
-    .to(icon, { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: "power2.out" }, 0.1)
-    .to(icon, { y: -6, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, ">0.05")
-    .to({}, { duration: 0.15 }) // brief hold
-    .to(icon, { opacity: 0, duration: 0.35, ease: "power1.in" }, ">")
-    .to(backdrop, { opacity: 0, duration: 0.35, ease: "power1.in" }, "<")
-    .to(loadingScreen, { y: "-100%", duration: 0.7, ease: "power2.inOut" }, ">-0.05");
+  tl.to(backdrop, { opacity: 0.1, duration: 0.7, ease: "power2.out" }, 0)
+    .to({}, { duration: 0.45 }) // quiet hold
+    .to(backdrop, { opacity: 0, duration: 0.35, ease: "power1.in" }, ">")
+    .to(loadingScreen, { y: "-100%", duration: 0.6, ease: "power2.inOut" }, ">-0.05");
 });

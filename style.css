@@ -1802,14 +1802,26 @@ img {
   text-shadow: 0 0 10px;
 }
 
-/* -- clip program cards: dark cards with white ink (matches feature grid) -- */
+/* -- clip program cards: dark cards with white ink (matches feature grid) --
+   uniform rhythm: the flex gap is the ONLY vertical spacing — all margins
+   zeroed so every card spaces its content identically */
 .clip-step {
   background-color: var(--black);
   border: 5px solid var(--white);
   border-color: var(--white) #fff #fff var(--white);
   box-shadow: 7px 7px #000000b3;
   padding: 2.25rem 2rem 2.5rem;
-  gap: 14px;
+  gap: 16px;
+}
+.clip-step .clip-num,
+.clip-step .clip-step-title,
+.clip-step .clip-step-desc {
+  margin: 0;
+}
+/* note pinned to the card bottom so all three cards share one baseline */
+.clip-step .clip-note {
+  margin: auto 0 0;
+  padding-top: 14px;
 }
 .clip-num {
   font-weight: 900;
