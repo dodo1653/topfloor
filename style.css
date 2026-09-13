@@ -2175,11 +2175,60 @@ img {
   -webkit-mask-size: 600px 600px;
   mask-size: 600px 600px;
   -webkit-text-stroke: 1px #ffffff;
+  position: relative;
 }
 
-/* "top floor" — slightly thicker stroke for visual weight contrast */
+/* Vertical streak / drip overlay — mimics ink running down a photocopy */
+.text-block::after,
+.text-block-copy-copy::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 18px,
+      rgba(255,255,255,0.07) 18px,
+      rgba(255,255,255,0.07) 20px,
+      transparent 20px,
+      transparent 55px,
+      rgba(255,255,255,0.05) 55px,
+      rgba(255,255,255,0.05) 56px,
+      transparent 56px,
+      transparent 90px,
+      rgba(255,255,255,0.09) 90px,
+      rgba(255,255,255,0.09) 93px,
+      transparent 93px,
+      transparent 140px,
+      rgba(255,255,255,0.04) 140px,
+      rgba(255,255,255,0.04) 141px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 40%,
+      rgba(255,255,255,0.03) 60%,
+      rgba(255,255,255,0.06) 80%,
+      rgba(255,255,255,0.02) 100%
+    );
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+/* "top floor" — slightly thicker stroke, stronger glow */
 .text-block-copy-copy {
   -webkit-text-stroke: 1.5px #ffffff;
-  text-shadow: 0 0 30px rgba(255, 255, 255, .15);
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.4),
+    0 0 60px rgba(255, 255, 255, 0.15),
+    0 0 120px rgba(255, 255, 255, 0.08);
+}
+
+/* "Get Paid To / Clip with" — matching glow */
+.text-block {
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.35),
+    0 0 50px rgba(255, 255, 255, 0.12);
 }
 
