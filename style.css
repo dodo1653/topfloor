@@ -2175,6 +2175,7 @@ img {
   -webkit-mask-size: 800px 800px;
   mask-size: 800px 800px;
   -webkit-text-stroke: 0.5px #ffffff;
+  background-color: transparent;
 }
 
 /* "top floor" — slightly thicker stroke, stronger glow */
