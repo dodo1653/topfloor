@@ -1760,144 +1760,166 @@ img {
   filter: url("#tfDistress");
 }
 
-/* ==== Print system v3: one voice — the distressed print font ==== */
-/* No pixel font anywhere. Nav/chips/footer/buttons + all card text use the
-   site font with the hero's glow/texture language, scaled per size. */
+/* ==== Print system v4: consistent glow, accent color, even spacing ==== */
+/* Glow rule: text-shadow with no color uses the text's own color, so every
+   element glows uniformly — white glows white, yellow glows yellow, and the
+   dark text on light/gradient cards gets no artificial white halo. */
 
-/* -- navbar: tracked labels with soft glow -- */
+/* -- elevator card: "INTRODUCING TOPFLOOR" — dark on the gradient, no white glow -- */
+.block-6 .paragraph {
+  color: var(--black);
+  font-weight: 900;
+  font-stretch: 115%;
+  letter-spacing: 2px;
+  font-size: 20px;
+  text-shadow: none;
+}
+
+/* -- feature titles: ALL variants get identical treatment + glow -- */
+.title .text-block-4,
+.title .text-block-4-copy-copy,
+.title .text-block-4-copy-copy-copy {
+  font-weight: 900;
+  font-stretch: 112%;
+  letter-spacing: 1.5px;
+  font-size: 18px;
+  text-shadow: 0 0 12px;
+}
+
+/* -- feature descriptions: yellow accent, glowing -- */
+.title ~ .paragraph-3,
+.feature-1 .paragraph-3,
+.feature-2 .paragraph-3,
+.feature-3 .paragraph-3,
+.feature-4 .paragraph-3,
+.feature-5 .paragraph-3,
+.feature-6 .paragraph-3,
+.feature-7 .paragraph-3,
+.feature-8 .paragraph-3 {
+  color: #ffd22d;
+  letter-spacing: .5px;
+  line-height: 1.7;
+  text-shadow: 0 0 10px;
+}
+
+/* -- clip program cards: breathing room -- */
+.clip-step {
+  padding: 2.25rem 2rem 2.5rem;
+  gap: 14px;
+}
+.clip-num {
+  font-weight: 900;
+  font-stretch: 125%;
+  font-size: 46px;
+  color: #ffffff3d;
+  text-shadow: 0 0 16px;
+  margin-bottom: 2px;
+}
+.clip-step-title {
+  color: #fff;
+  font-weight: 900;
+  font-stretch: 112%;
+  letter-spacing: 1.5px;
+  font-size: 20px;
+  margin: 0 0 6px;
+  text-shadow: 0 0 12px;
+}
+.clip-step-desc {
+  letter-spacing: .5px;
+  line-height: 1.75;
+  color: #ffffffd9;
+  text-shadow: 0 0 10px;
+}
+.clip-note {
+  margin-top: 16px;
+  padding-top: 12px;
+  line-height: 1.7;
+  color: #ffffffb0;
+  text-shadow: 0 0 10px;
+}
+.clip-warning {
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.75;
+  text-shadow: 0 0 12px;
+  border: 4px solid #ffd22d;
+  box-shadow: 6px 6px #000000b3;
+}
+
+/* -- accent color so the page feels alive -- */
+.minititle .text-block-2,
+.minititle-copy .text-block-2 {
+  color: #ffd22d;
+  text-shadow: 0 0 10px;
+}
+.paragraph-2 {
+  color: #f4f6f9;
+  text-shadow: 0 0 12px;
+}
+.text-span-2 {
+  color: #ffd22d;
+  text-shadow: 0 0 14px;
+}
+.text-block-6 {
+  color: #ffd22d;
+  text-shadow: 0 0 12px;
+}
+.social-handle {
+  color: #e9edf2;
+  text-shadow: 0 0 10px;
+}
+
+/* -- nav + buttons: same glow language -- */
 .link-block > div {
   font-weight: 700;
   letter-spacing: 2px;
-  text-shadow: 0 0 12px #ffffff40;
+  text-shadow: 0 0 12px;
 }
-.navbar .button {
-  font-weight: 900;
-  font-stretch: 110%;
-  letter-spacing: 1.5px;
-  box-shadow: 4px 4px #000;
-}
-
-/* -- chip labels: glow stamps with // prefix -- */
-.minititle .text-block-2,
-.minititle-copy .text-block-2 {
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  color: #ffffffd9;
-  text-shadow: 0 0 10px #ffffff38;
-}
-.minititle .text-block-2::before,
-.minititle-copy .text-block-2::before {
-  content: "// ";
-  color: var(--white);
-  opacity: .8;
-}
-
-/* -- footer: tracked labels with soft glow -- */
-.social-handle {
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-shadow: 0 0 10px #ffffff38;
-}
-.text-block-6 {
-  font-weight: 900;
-  letter-spacing: 2.5px;
-  text-shadow: 0 0 12px #ffffff40;
-}
-
-/* -- all CTA buttons: display-weight labels -- */
+.navbar .button,
 .button {
   font-weight: 900;
   font-stretch: 110%;
   letter-spacing: 1.5px;
   box-shadow: 4px 4px #000;
 }
+.minititle .text-block-2::before,
+.minititle-copy .text-block-2::before {
+  content: "// ";
+  opacity: .85;
+}
 
-/* -- pain-point statements: punch, colors untouched -- */
+/* -- pain-point statements: punch (colors untouched) -- */
 .paragraph {
   letter-spacing: 1px;
   font-weight: 700;
-  text-shadow: 0 0 14px #ffffff2e;
+  text-shadow: 0 0 12px;
 }
 
-/* -- section intro paragraphs -- */
-.paragraph-2 {
-  letter-spacing: 1.5px;
-  color: #ffffffe6;
-  text-shadow: 0 0 12px #ffffff30;
+/* -- section rhythm: replace rigid heights with padded flow -- */
+.section-3 {
+  height: auto;
+  min-height: 120vh;
+  padding: 8rem 0 9rem;
 }
-
-/* -- feature cards: distressed titles, glowing descriptions -- */
-.title .text-block-4 {
-  font-weight: 900;
-  font-stretch: 110%;
-  letter-spacing: 1.5px;
-  font-size: 18px;
-  filter: url("#tfDistressSmall");
+.section-4 {
+  height: auto;
+  min-height: 100vh;
+  padding: 9rem 0;
 }
-.paragraph-3 {
-  letter-spacing: 1px;
-  color: #ffffffd9;
-  text-shadow: 0 0 10px #ffffff2b;
+.section-5 {
+  height: auto;
+  min-height: 120vh;
+  padding: 8rem 0 9rem;
 }
-
-/* -- pricing: display numerals, stamped plan tag -- */
-.text-block-5 { letter-spacing: 1px; }
-.text-span-2 {
-  font-weight: 900;
-  font-stretch: 125%;
-  letter-spacing: 0;
-  font-size: 46px;
+.section-6 {
+  height: auto;
+  min-height: 75vh;
+  padding: 8rem 0 10rem;
 }
-.text-span-103 { letter-spacing: 1px; font-size: 14px; line-height: 22px; }
-.text-span-104 {
-  letter-spacing: 2px;
-  font-size: 13px;
-  border: 3px solid #0f0f0f30;
-  padding: 4px 10px;
-  display: inline-block;
-}
-
-/* -- clip program: dark cards, hero-glow text -- */
-.clip-step {
-  background-color: var(--black);
-  border: 5px solid var(--white);
-  border-color: var(--white) #fff #fff var(--white);
-  box-shadow: 7px 7px #000000b3;
-}
-.clip-num {
-  font-weight: 900;
-  font-stretch: 125%;
-  font-size: 46px;
-  letter-spacing: 0;
-  color: #ffffff45;
-  text-shadow: 0 0 16px #ffffff3d;
-}
-.clip-step-title {
-  font-weight: 900;
-  font-stretch: 110%;
-  letter-spacing: 1.5px;
-  font-size: 20px;
-  color: #fff;
-  filter: url("#tfDistressSmall");
-}
-.clip-step-desc {
-  letter-spacing: 1px;
-  color: #ffffffe0;
-  text-shadow: 0 0 10px #ffffff30;
-}
-.clip-note {
-  letter-spacing: 1px;
-  font-size: 12px;
-  color: #ffffffb5;
-  border-top: 3px solid #ffffff22;
-}
-.clip-warning {
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: #fff;
-  text-shadow: 0 0 12px #ffffff38;
-  border: 4px solid #ffd22d;
-  box-shadow: 6px 6px #000000b3;
+.footer {
+  height: auto;
+  min-height: 40vh;
+  padding: 6rem 0;
 }
 
 /* -- punchline heading gets the full distress -- */
@@ -1909,4 +1931,11 @@ img {
   .paragraph { letter-spacing: .5px; }
   .text-span-2 { font-size: 40px; }
   .clip-warning { font-size: 12px; }
+  .block-6 .paragraph { font-size: 16px; }
+}
+
+/* -- accent word inside INTRODUCING TOPFLOOR -- */
+.accent {
+  color: #fff;
+  text-shadow: 0 0 14px #ffffff88;
 }
