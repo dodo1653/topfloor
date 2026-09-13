@@ -1759,3 +1759,148 @@ img {
   text-transform: uppercase;
   filter: url("#tfDistress");
 }
+
+/* ==== Secondary print system: pixel identity on every text element ==== */
+@font-face {
+  font-family: Tfpx;
+  src: url("assets/RasterForge.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* nav links: stamped labels */
+.link-block > div {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* buttons: pixel labels, solid yellow fill (inset sheen removed) */
+.button {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  box-shadow: 4px 4px #000;
+}
+
+/* chip labels (get paid to clip — / Start your journey / our plans / Post the clip.) */
+.minititle .text-block-2,
+.minititle-copy .text-block-2 {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #ffffffcc;
+}
+.minititle .text-block-2::before,
+.minititle-copy .text-block-2::before {
+  content: "// ";
+  color: var(--white);
+  opacity: .8;
+}
+
+/* body paragraphs: tracked-out pixel caps, eased to pure white */
+.paragraph,
+.paragraph-1,
+.paragraph-2,
+.paragraph-3 {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  letter-spacing: 1px;
+  color: #fff;
+}
+.paragraph-3 { color: #ffffffd9; }
+
+/* feature card titles: stamped labels */
+.title .text-block-4 {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* pricing: pixel numerals + stamped descriptor + pixel body copy */
+.text-block-5 {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  letter-spacing: 1px;
+}
+.text-span-2 {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  font-size: 48px;
+  letter-spacing: 0;
+}
+.text-block-5 {
+  letter-spacing: 1px;
+}
+.text-span-103,
+.text-span-104 {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+.text-span-104 { text-transform: uppercase; }
+
+/* clip program: pixel numerals, stamped step titles, pixel notes */
+.clip-num {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  font-size: 46px;
+  letter-spacing: 0;
+  color: #0f0f0f44;
+}
+.clip-step-title {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  font-size: 19px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.clip-note {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+/* warning box: bordered stamp treatment */
+.clip-warning {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  border: 4px solid #ffd22d;
+  box-shadow: 6px 6px #000;
+  text-transform: uppercase;
+}
+
+/* footer social handles + follow label */
+.social-handle {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.text-block-6 {
+  font-family: Tfpx, Jpbgm, Arial, sans-serif;
+  font-size: 15px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+/* punchline heading (Clippers Play Differently) gets the real distress */
+.text-block-copy-copy-copy-copy-copy {
+  filter: url("#tfDistress");
+}
+
+/* re-assert dark text on light pain-point cards (must stay after the .paragraph override above) */
+.block .paragraph,
+.block-5 .paragraph {
+  color: var(--black);
+}
+
+/* phones: pixel fonts get slightly tighter tracking */
+@media screen and (max-width: 767px) {
+  .paragraph,
+  .paragraph-1,
+  .paragraph-2,
+  .paragraph-3 { letter-spacing: .5px; }
+  .text-span-2 { font-size: 42px; }
+  .clip-warning { font-size: 11px; letter-spacing: .5px; }
+}
