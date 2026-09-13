@@ -327,7 +327,7 @@ img {
 }
 
 .block-3 {
-  background-color: var(--purple);
+  background-color: #272727;
   border: 5px solid #000;
   padding: .75rem 2rem;
   display: flex;
@@ -378,8 +378,9 @@ img {
   display: flex;
   position: absolute;
   bottom: -3000px;
-  left: 500px;
+  left: calc(50% - 200px);
   width: 400px;
+  text-align: center;
   height: 150px;
   box-shadow: inset 3px 3px #fff3, 7px 7px #000;
   box-shadow: 0px 0px 50px #ffffff25;
@@ -1806,12 +1807,28 @@ img {
    uniform rhythm: the flex gap is the ONLY vertical spacing — all margins
    zeroed so every card spaces its content identically */
 .clip-step {
-  background-color: var(--black);
-  border: 5px solid var(--white);
-  border-color: var(--white) #fff #fff var(--white);
-  box-shadow: 7px 7px #000000b3;
+  background-color: var(--white);
+  border: 5px solid #000;
+  box-shadow: 7px 7px #000;
   padding: 2.25rem 2rem 2.5rem;
   gap: 16px;
+}
+.clip-step .clip-num {
+  color: #0f0f0f42;
+  text-shadow: 0 0 12px;
+}
+.clip-step .clip-step-title {
+  color: var(--black);
+  text-shadow: none;
+}
+.clip-step .clip-step-desc {
+  color: #0f0f0fd0;
+  text-shadow: none;
+}
+.clip-step .clip-note {
+  color: #0f0f0fa8;
+  text-shadow: none;
+  border-top: 3px solid #0f0f0f26;
 }
 .clip-step .clip-num,
 .clip-step .clip-step-title,
@@ -2036,11 +2053,12 @@ img {
 
 /* ==== v6: gold punchline, footer overhaul, tighter section rhythm ==== */
 
-/* -- punchline heading: gold/gold -- */
-.text-block-copy-copy-copy-copy-copy {
+/* -- punchline heading: gold ink, NO filter (its white bloom rings gold glyphs) -- */
+.gold-punch {
   background-image: none !important;
   -webkit-text-fill-color: #ffd22d;
   color: #ffd22d;
+  filter: none;
   text-shadow: 0 0 14px;
 }
 
@@ -2112,3 +2130,18 @@ img {
   padding: 4px 12px;
 }
 .text-block-5 { font-weight: 700; }
+
+/* The Clip Program: white ink like the other display headings */
+.text-block-copy-copy-copy-copy-copy:not(.gold-punch) {
+  -webkit-text-fill-color: #fff;
+  color: #fff;
+  text-shadow: none;
+}
+
+/* Chasing views line: matches the other pain-point statements (dark ink, no glow) */
+.paragraph-1 {
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: none;
+}
+
