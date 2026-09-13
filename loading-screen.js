@@ -34,8 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.style.overflow = "hidden";
   document.documentElement.style.overflow = "hidden";
 
-  // Cinematic timeline: backdrop breathes in, icon fades up, one gentle breath,
-  // quiet hold, fade out together, slide away.
+  // Cinematic but quick: backdrop breathes in, icon fades up, one short breath,
+  // brief hold, fade out together, slide away. (~3s total)
   const tl = gsap.timeline({
     onComplete: () => {
       loadingScreen.remove();
@@ -47,11 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 
-  tl.to(backdrop, { opacity: 0.1, duration: 1.2, ease: "power2.out" }, 0)
-    .to(icon, { opacity: 1, scale: 1, y: 0, duration: 1.3, ease: "power2.out" }, 0.25)
-    .to(icon, { y: -7, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, ">0.2")
-    .to({}, { duration: 0.35 }) // quiet hold
-    .to(icon, { opacity: 0, duration: 0.5, ease: "power1.in" }, ">")
-    .to(backdrop, { opacity: 0, duration: 0.5, ease: "power1.in" }, "<")
-    .to(loadingScreen, { y: "-100%", duration: 0.8, ease: "power2.inOut" }, ">-0.1");
+  tl.to(backdrop, { opacity: 0.1, duration: 0.6, ease: "power2.out" }, 0)
+    .to(icon, { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: "power2.out" }, 0.1)
+    .to(icon, { y: -6, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, ">0.05")
+    .to({}, { duration: 0.15 }) // brief hold
+    .to(icon, { opacity: 0, duration: 0.35, ease: "power1.in" }, ">")
+    .to(backdrop, { opacity: 0, duration: 0.35, ease: "power1.in" }, "<")
+    .to(loadingScreen, { y: "-100%", duration: 0.7, ease: "power2.inOut" }, ">-0.05");
 });

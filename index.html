@@ -276,5 +276,28 @@
             </div>
         </section>
         <script src="main.js" type="text/javascript"></script>
+
+        <!-- Procedural distress for display type: natural ink erosion via fractal noise -->
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+            <filter id="tfDistress" x="-5%" y="-5%" width="110%" height="110%">
+                <!-- rough, slightly uneven photocopy edges -->
+                <feTurbulence type="fractalNoise" baseFrequency="0.012 0.016" numOctaves="2" seed="4" result="warpNoise"/>
+                <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="5" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+                <!-- ink erosion: sparse irregular dark patches inside the letters -->
+                <feTurbulence type="fractalNoise" baseFrequency="0.085" numOctaves="3" seed="7" result="grain"/>
+                <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.9 0.9 0.9 0 -1.82" result="speckAlpha"/>
+                <feComposite in="speckAlpha" in2="warped" operator="in" result="specks"/>
+                <feComposite in="warped" in2="specks" operator="out" result="base"/>
+                <!-- uneven ink density: faint grain only at noise peaks, never a uniform veil -->
+                <feTurbulence type="fractalNoise" baseFrequency="0.35" numOctaves="2" seed="11" result="fine"/>
+                <feColorMatrix in="fine" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.55 0.55 0.55 0 -1.12" result="fineAlpha"/>
+                <feComposite in="fineAlpha" in2="base" operator="in" result="fineInGlyphs"/>
+                <feMerge>
+                    <feMergeNode in="base"/>
+                    <feMergeNode in="specks"/>
+                    <feMergeNode in="fineInGlyphs"/>
+                </feMerge>
+            </filter>
+        </svg>
     </body>
 </html>
