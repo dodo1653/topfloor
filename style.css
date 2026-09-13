@@ -165,8 +165,8 @@ img {
 }
 
 .text-block {
-  background-image: linear-gradient(240deg, #fff0 35%, #fff3 50%, #fff0 65%), linear-gradient(180deg, #ffffff80, #ffffff80 7%, #fff0 9%, #fff3 49%, #ffffff80 57%, #fff0 58%, #fff0), linear-gradient(180deg, #ffffff 15%, #8f99a8);
-  filter: drop-shadow(0 0 50px #fff3);
+  background-image: linear-gradient(#fff, #fff);
+  filter: url("#tfDistress");
   letter-spacing: -1px;
   text-align: center;
   -webkit-text-fill-color: transparent;
@@ -185,11 +185,11 @@ img {
 
 .text-block-copy {
   background-color: var(--white);
-  filter: drop-shadow(0 0 50px #fff3);
+  filter: url("#tfDistress");
   color: var(--white);
   letter-spacing: -1px;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(240deg, #fff0 35%, #fff3 50%, #fff0 65%), linear-gradient(#fff, #ffffff80 23%, #fff0 24%, #fff0);
+  background-image: linear-gradient(#fff, #fff);
   -webkit-background-clip: text;
   background-clip: text;
   font-family: Jpbgm, Arial, sans-serif;
@@ -261,7 +261,7 @@ img {
 }
 
 .text-block-3 {
-  filter: drop-shadow(0 0 40px #fff3);
+  filter: url("#tfDistress");
   color: #fff;
   font-family: Jpbgm, Arial, sans-serif;
   font-size: 80px;
@@ -269,14 +269,14 @@ img {
 }
 
 .text-span {
-  background-image: linear-gradient(90deg, #ffffff, #8f99a8);
+  background-image: linear-gradient(#fff, #fff);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
 }
 
 .text-span:hover {
-  background-image: linear-gradient(90deg, #ffffff, #8f99a8);
+  background-image: linear-gradient(#fff, #fff);
 }
 
 .block {
@@ -718,8 +718,8 @@ img {
 }
 
 .text-block-copy {
-  background-image: linear-gradient(240deg, #fff0 35%, #fff3 50%, #fff0 65%), linear-gradient(180deg, #ffffff80, #ffffff80 7%, #fff0 9%, #fff3 49%, #ffffff80 57%, #fff0 58%, #fff0), linear-gradient(180deg, #ffffff 15%, #8f99a8);
-  filter: drop-shadow(0 0 50px #fff3);
+  background-image: linear-gradient(#fff, #fff);
+  filter: url("#tfDistress");
   text-align: center;
   letter-spacing: -1px;
   -webkit-text-fill-color: transparent;
@@ -748,13 +748,13 @@ img {
 }
 
 .text-block-copy-copy-copy {
-  filter: drop-shadow(0 0 50px #fff3);
+  filter: url("#tfDistress");
   color: var(--white);
   text-align: center;
   letter-spacing: -1px;
   -webkit-text-fill-color: transparent;
   background-color: #fff;
-  background-image: linear-gradient(240deg, #fff0 35%, #fff3 50%, #fff0 65%), linear-gradient(#fff, #fff0 12% 23%, #fff0 38%, #ffffff80 39%, #fff0 45% 69%, #ffffff80 75%, #fff0 76%, #fff0);
+  background-image: linear-gradient(#fff, #fff);
   -webkit-background-clip: text;
   background-clip: text;
   width: 65%;
@@ -765,12 +765,12 @@ img {
 
 .text-block-copy-copy {
   background-color: var(--white);
-  filter: drop-shadow(0 0 50px #fff3);
+  filter: url("#tfDistress");
   color: var(--white);
   text-align: center;
   letter-spacing: -1px;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(240deg, #fff0 35%, #fff3 50%, #fff0 65%), linear-gradient(#fff, #ffffff80 23%, #fff0 24%, #fff0);
+  background-image: linear-gradient(#fff, #fff);
   -webkit-background-clip: text;
   background-clip: text;
   font-family: Jpbgm, Arial, sans-serif;
@@ -943,12 +943,12 @@ img {
 
 .text-block-copy-copy-copy-copy {
   background-color: var(--purple);
-  filter: drop-shadow(0 0 50px #fff3);
+  filter: url("#tfDistress");
   color: var(--white);
   text-align: left;
   letter-spacing: -1px;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(240deg, #fff0 35%, #fff3 50%, #fff0 65%);
+  background-image: linear-gradient(#fff, #fff);
   -webkit-background-clip: text;
   background-clip: text;
   width: 100%;
@@ -965,12 +965,12 @@ img {
 
 .text-block-copy-copy-copy-copy-copy {
   background-color: var(--yellow);
-  filter: drop-shadow(0 0 50px #fff3);
+  filter: url("#tfDistress");
   color: var(--white);
   text-align: center;
   letter-spacing: -1px;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(240deg, #fff0 35%, #fff3 50%, #fff0 65%), linear-gradient(#fff, #fff0 12% 23%, #fff0 38%, #ffffff80 39%, #fff0 45% 69%, #ffffff80 75%, #fff0 76%, #fff0);
+  background-image: linear-gradient(#fff, #fff);
   -webkit-background-clip: text;
   background-clip: text;
   width: 65%;
@@ -1183,7 +1183,7 @@ img {
   }
 
   .text-block {
-    background-image: linear-gradient(240deg, #fff0 35%, #fff3 50%, #fff0 65%), linear-gradient(180deg, #ffffff80, #ffffff80 11%, #fff0 15%, #fff3 49%, #ffffff80 57%, #fff0 64%, #fff0), linear-gradient(180deg, #ffffff 15%, #8f99a8);
+    background-image: linear-gradient(#fff, #fff);
     font-size: 65px;
     line-height: 65px;
   }
@@ -1262,7 +1262,7 @@ img {
   }
 
   .text-block-copy {
-    background-image: linear-gradient(240deg, #fff0 35%, #fff3 50%, #fff0 65%), linear-gradient(180deg, #ffffff80, #ffffff80 11%, #fff0 15%, #fff3 49%, #ffffff80 57%, #fff0 64%, #fff0), linear-gradient(180deg, #ffffff 15%, #8f99a8);
+    background-image: linear-gradient(#fff, #fff);
     font-size: 65px;
     line-height: 65px;
   }
@@ -1324,7 +1324,7 @@ img {
   }
 
   .text-block-copy {
-    background-image: linear-gradient(240deg, #fff0 35%, #fff3 50%, #fff0 65%), linear-gradient(#fff, #ffffff80 28%, #fff0 37%, #fff0);
+    background-image: linear-gradient(#fff, #fff);
     font-size: 45px;
     line-height: 45px;
   }
@@ -1383,7 +1383,7 @@ img {
 
   .text-block-copy-copy {
     letter-spacing: -2px;
-    background-image: linear-gradient(240deg, #fff0 35%, #fff3 50%, #fff0 65%), linear-gradient(#fff, #ffffff80 28%, #fff0 37%, #fff0);
+    background-image: linear-gradient(#fff, #fff);
     font-size: 35px;
     line-height: 35px;
   }
@@ -1407,7 +1407,7 @@ img {
   }
 
   .text-block-copy {
-    background-image: linear-gradient(240deg, #fff0 35%, #fff3 50%, #fff0 65%), linear-gradient(180deg, #fff, #ffffff80 6%, #fff0 14%, #fff0), linear-gradient(180deg, #ffffff 15%, #8f99a8);
+    background-image: linear-gradient(#fff, #fff);
     text-align: center;
     letter-spacing: -2px;
     font-size: 35px;
@@ -1421,13 +1421,13 @@ img {
 
   .text-block-copy-copy-copy {
     letter-spacing: -2px;
-    background-image: linear-gradient(240deg, #fff0 35%, #fff3 50%, #fff0 65%), linear-gradient(#fff, #ffffff80 28%, #fff0 37%, #fff0);
+    background-image: linear-gradient(#fff, #fff);
     font-size: 35px;
     line-height: 35px;
   }
 
   .text-block-copy-copy {
-    background-image: linear-gradient(240deg, #fff0 35%, #fff3 50%, #fff0 65%), linear-gradient(#fff, #ffffff80 28%, #fff0 37%, #fff0);
+    background-image: linear-gradient(#fff, #fff);
     font-size: 45px;
     line-height: 45px;
   }
@@ -1483,7 +1483,7 @@ img {
 
   .text-block-copy-copy-copy-copy {
     letter-spacing: -2px;
-    background-image: linear-gradient(240deg, #fff0 35%, #fff3 50%, #fff0 65%), linear-gradient(#fff, #ffffff80 28%, #fff0 37%, #fff0);
+    background-image: linear-gradient(#fff, #fff);
     font-size: 35px;
     line-height: 35px;
   }
@@ -1494,7 +1494,7 @@ img {
 
   .text-block-copy-copy-copy-copy-copy {
     letter-spacing: -2px;
-    background-image: linear-gradient(240deg, #fff0 35%, #fff3 50%, #fff0 65%), linear-gradient(#fff, #ffffff80 28%, #fff0 37%, #fff0);
+    background-image: linear-gradient(#fff, #fff);
     font-size: 35px;
     line-height: 35px;
   }
@@ -1747,6 +1747,7 @@ img {
 
 /* ---- Druk Wide Bold display treatment ---- */
 .text-block,
+.text-block-3,
 .text-block-copy,
 .text-block-copy-copy,
 .text-block-copy-copy-copy,
@@ -1756,5 +1757,5 @@ img {
   font-weight: 900;
   letter-spacing: 0px;
   text-transform: uppercase;
-  filter: url("#tfDistress") drop-shadow(0 0 26px rgba(255, 255, 255, 0.12));
+  filter: url("#tfDistress");
 }

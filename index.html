@@ -277,25 +277,54 @@
         </section>
         <script src="main.js" type="text/javascript"></script>
 
-        <!-- Procedural distress for display type: natural ink erosion via fractal noise -->
+        <!-- Photocopy-worn display type: the letterforms themselves are damaged -->
         <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-            <filter id="tfDistress" x="-5%" y="-5%" width="110%" height="110%">
-                <!-- rough, slightly uneven photocopy edges -->
+            <filter id="tfDistress" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
+                <!-- contour warp: rough, chipped, hand-printed edges -->
                 <feTurbulence type="fractalNoise" baseFrequency="0.012 0.016" numOctaves="2" seed="4" result="warpNoise"/>
-                <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="5" xChannelSelector="R" yChannelSelector="G" result="warped"/>
-                <!-- ink erosion: sparse irregular dark patches inside the letters -->
-                <feTurbulence type="fractalNoise" baseFrequency="0.085" numOctaves="3" seed="7" result="grain"/>
-                <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.9 0.9 0.9 0 -1.82" result="speckAlpha"/>
-                <feComposite in="speckAlpha" in2="warped" operator="in" result="specks"/>
-                <feComposite in="warped" in2="specks" operator="out" result="base"/>
-                <!-- uneven ink density: faint grain only at noise peaks, never a uniform veil -->
-                <feTurbulence type="fractalNoise" baseFrequency="0.35" numOctaves="2" seed="11" result="fine"/>
-                <feColorMatrix in="fine" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.55 0.55 0.55 0 -1.12" result="fineAlpha"/>
-                <feComposite in="fineAlpha" in2="base" operator="in" result="fineInGlyphs"/>
+                <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="7" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+                <!-- edge erosion: irregular bites along the contour, worst at sharp corners -->
+                <feMorphology in="warped" operator="dilate" radius="2" result="band"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="3" seed="21" result="edgeNoise"/>
+                <feColorMatrix in="edgeNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.4 2.4 2.4 0 -5.7" result="edgeCut"/>
+                <feComposite in="edgeCut" in2="band" operator="in" result="edgeMask"/>
+                <feGaussianBlur in="edgeMask" stdDeviation="0.6" result="edgeFeather"/>
+                <feComposite in="warped" in2="edgeFeather" operator="out" result="base1"/>
+                <!-- larger irregular stains and worn patches inside the letters -->
+                <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="3" seed="33" result="stainNoise"/>
+                <feColorMatrix in="stainNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.2 2.2 2.2 0 -5.4" result="stainCut"/>
+                <feComposite in="stainCut" in2="base1" operator="in" result="stains"/>
+                <feComposite in="base1" in2="stains" operator="out" result="base2"/>
+                <!-- dense clusters of tiny black specks embedded in the white -->
+                <feTurbulence type="fractalNoise" baseFrequency="0.14" numOctaves="2" seed="8" result="speckNoise"/>
+                <feColorMatrix in="speckNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.0 2.0 2.0 0 -5.2" result="speckCut"/>
+                <feComposite in="speckCut" in2="base2" operator="in" result="specks"/>
+                <feComposite in="base2" in2="specks" operator="out" result="base3"/>
+                <!-- tiny horizontal scratches / broken print marks -->
+                <feTurbulence type="fractalNoise" baseFrequency="0.015 0.5" numOctaves="2" seed="55" result="scrNoise"/>
+                <feColorMatrix in="scrNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.0 2.0 2.0 0 -5.1" result="scrCut"/>
+                <feComposite in="scrCut" in2="base3" operator="in" result="scratches"/>
+                <feComposite in="base3" in2="scratches" operator="out" result="base4"/>
+                <!-- uneven ink density: patchy gray veil, never uniform -->
+                <feTurbulence type="fractalNoise" baseFrequency="0.22" numOctaves="2" seed="12" result="densNoise"/>
+                <feColorMatrix in="densNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.35 0.35 0.35 0 -0.85" result="densCut"/>
+                <feFlood flood-color="#000000" result="black"/>
+                <feComposite in="black" in2="base4" operator="in" result="blackInShape"/>
+                <feComposite in="blackInShape" in2="densCut" operator="in" result="densityVeil"/>
+                <feMerge result="lettersRaw">
+                    <feMergeNode in="base4"/>
+                    <feMergeNode in="densityVeil"/>
+                </feMerge>
+                <!-- overexposed photocopy feel: slight softness + white bloom -->
+                <feGaussianBlur in="lettersRaw" stdDeviation="0.45" result="letters"/>
+                <feMorphology in="base4" operator="dilate" radius="4" result="bloomShape"/>
+                <feGaussianBlur in="bloomShape" stdDeviation="6" result="bloomBlur"/>
+                <feFlood flood-color="#ffffff" result="white"/>
+                <feComposite in="white" in2="bloomBlur" operator="in" result="bloomWhite"/>
+                <feColorMatrix in="bloomWhite" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.26 0" result="bloom"/>
                 <feMerge>
-                    <feMergeNode in="base"/>
-                    <feMergeNode in="specks"/>
-                    <feMergeNode in="fineInGlyphs"/>
+                    <feMergeNode in="bloom"/>
+                    <feMergeNode in="letters"/>
                 </feMerge>
             </filter>
         </svg>
