@@ -2163,72 +2163,38 @@ img {
   background-attachment: fixed;
 }
 
-/* ==== hero section: distressed text with seamless erosion mask ==== */
-/* SVG filter (#tfDistress) = edge warp, stains, specks, scratches, bloom.
-   erosion.png mask = internal ink erosion (now seamless, no grid lines).
-   Text-stroke at 1px keeps weight without hard edges. */
+/* ==== hero section: distressed text with stacked erosion + streak masks ==== */
+/* Layer 1: SVG filter (#tfDistress) = edge warp, stains, specks, scratches, bloom
+   Layer 2: erosion.png mask = heavy ink degradation patches
+   Layer 3: vertical_streaks.png mask = vertical drip/scratch lines
+   Layer 4: text-stroke = weight
+   Layer 5: text-shadow = cinematic glow */
 
 .text-block,
 .text-block-copy-copy {
-  -webkit-mask-image: url("assets/erosion.png");
-  mask-image: url("assets/erosion.png");
-  -webkit-mask-size: 600px 600px;
-  mask-size: 600px 600px;
+  -webkit-mask-image: url("assets/erosion.png"), url("assets/vertical_streaks.png");
+  mask-image: url("assets/erosion.png"), url("assets/vertical_streaks.png");
+  -webkit-mask-size: 512px 512px, 300px 300px;
+  mask-size: 512px 512px, 300px 300px;
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
   -webkit-text-stroke: 1px #ffffff;
   position: relative;
 }
 
-/* Vertical streak / drip overlay — mimics ink running down a photocopy */
-.text-block::after,
-.text-block-copy-copy::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      transparent 0px,
-      transparent 18px,
-      rgba(255,255,255,0.07) 18px,
-      rgba(255,255,255,0.07) 20px,
-      transparent 20px,
-      transparent 55px,
-      rgba(255,255,255,0.05) 55px,
-      rgba(255,255,255,0.05) 56px,
-      transparent 56px,
-      transparent 90px,
-      rgba(255,255,255,0.09) 90px,
-      rgba(255,255,255,0.09) 93px,
-      transparent 93px,
-      transparent 140px,
-      rgba(255,255,255,0.04) 140px,
-      rgba(255,255,255,0.04) 141px
-    ),
-    repeating-linear-gradient(
-      180deg,
-      transparent 0%,
-      transparent 40%,
-      rgba(255,255,255,0.03) 60%,
-      rgba(255,255,255,0.06) 80%,
-      rgba(255,255,255,0.02) 100%
-    );
-  pointer-events: none;
-  mix-blend-mode: screen;
-}
-
-/* "top floor" — slightly thicker stroke, stronger glow */
+/* "top floor" — thicker stroke, stronger glow */
 .text-block-copy-copy {
   -webkit-text-stroke: 1.5px #ffffff;
   text-shadow:
-    0 0 20px rgba(255, 255, 255, 0.4),
-    0 0 60px rgba(255, 255, 255, 0.15),
-    0 0 120px rgba(255, 255, 255, 0.08);
+    0 0 20px rgba(255, 255, 255, 0.5),
+    0 0 60px rgba(255, 255, 255, 0.2),
+    0 0 120px rgba(255, 255, 255, 0.1);
 }
 
 /* "Get Paid To / Clip with" — matching glow */
 .text-block {
   text-shadow:
-    0 0 20px rgba(255, 255, 255, 0.35),
-    0 0 50px rgba(255, 255, 255, 0.12);
+    0 0 20px rgba(255, 255, 255, 0.45),
+    0 0 50px rgba(255, 255, 255, 0.15);
 }
 
