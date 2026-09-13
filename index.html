@@ -327,6 +327,45 @@
                     <feMergeNode in="letters"/>
                 </feMerge>
             </filter>
+
+            <!-- small-size distress variant: same DNA, lighter so titles stay legible -->
+            <filter id="tfDistressSmall" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency="0.012 0.016" numOctaves="2" seed="4" result="warpNoise"/>
+                <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="4" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+                <feMorphology in="warped" operator="dilate" radius="1.5" result="band"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="3" seed="21" result="edgeNoise"/>
+                <feColorMatrix in="edgeNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.4 2.4 2.4 0 -5.9" result="edgeCut"/>
+                <feComposite in="edgeCut" in2="band" operator="in" result="edgeMask"/>
+                <feGaussianBlur in="edgeMask" stdDeviation="0.5" result="edgeFeather"/>
+                <feComposite in="warped" in2="edgeFeather" operator="out" result="base1"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="3" seed="33" result="stainNoise"/>
+                <feColorMatrix in="stainNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.2 2.2 2.2 0 -5.9" result="stainCut"/>
+                <feComposite in="stainCut" in2="base1" operator="in" result="stains"/>
+                <feComposite in="base1" in2="stains" operator="out" result="base2"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.14" numOctaves="2" seed="8" result="speckNoise"/>
+                <feColorMatrix in="speckNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.0 2.0 2.0 0 -5.8" result="speckCut"/>
+                <feComposite in="speckCut" in2="base2" operator="in" result="specks"/>
+                <feComposite in="base2" in2="specks" operator="out" result="base3"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.22" numOctaves="2" seed="12" result="densNoise"/>
+                <feColorMatrix in="densNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.3 0.3 0.3 0 -0.8" result="densCut"/>
+                <feFlood flood-color="#000000" result="black"/>
+                <feComposite in="black" in2="base3" operator="in" result="blackInShape"/>
+                <feComposite in="blackInShape" in2="densCut" operator="in" result="densityVeil"/>
+                <feMerge result="lettersRaw">
+                    <feMergeNode in="base3"/>
+                    <feMergeNode in="densityVeil"/>
+                </feMerge>
+                <feGaussianBlur in="lettersRaw" stdDeviation="0.3" result="letters"/>
+                <feMorphology in="base3" operator="dilate" radius="3" result="bloomShape"/>
+                <feGaussianBlur in="bloomShape" stdDeviation="4" result="bloomBlur"/>
+                <feFlood flood-color="#ffffff" result="white"/>
+                <feComposite in="white" in2="bloomBlur" operator="in" result="bloomWhite"/>
+                <feColorMatrix in="bloomWhite" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.3 0" result="bloom"/>
+                <feMerge>
+                    <feMergeNode in="bloom"/>
+                    <feMergeNode in="letters"/>
+                </feMerge>
+            </filter>
         </svg>
     </body>
 </html>

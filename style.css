@@ -1760,37 +1760,30 @@ img {
   filter: url("#tfDistress");
 }
 
-/* ==== Restrained print system v2 ====
-   Pixel (blocky) voice: navbar + small labels/chips ONLY.
-   Everything else: site font with deliberate tracking/weight/stamps. */
-@font-face {
-  font-family: Tfpx;
-  src: url("assets/RasterForge.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
+/* ==== Print system v3: one voice — the distressed print font ==== */
+/* No pixel font anywhere. Nav/chips/footer/buttons + all card text use the
+   site font with the hero's glow/texture language, scaled per size. */
 
-/* -- navbar: pixel labels -- */
+/* -- navbar: tracked labels with soft glow -- */
 .link-block > div {
-  font-family: Tfpx, Jpbgm, Arial, sans-serif;
-  font-size: 14px;
+  font-weight: 700;
   letter-spacing: 2px;
+  text-shadow: 0 0 12px #ffffff40;
 }
 .navbar .button {
-  font-family: Tfpx, Jpbgm, Arial, sans-serif;
-  font-size: 15px;
+  font-weight: 900;
+  font-stretch: 110%;
   letter-spacing: 1.5px;
   box-shadow: 4px 4px #000;
 }
 
-/* -- chip labels: pixel stamps with // prefix -- */
+/* -- chip labels: glow stamps with // prefix -- */
 .minititle .text-block-2,
 .minititle-copy .text-block-2 {
-  font-family: Tfpx, Jpbgm, Arial, sans-serif;
-  font-size: 12px;
+  font-weight: 700;
   letter-spacing: 2.5px;
-  color: #ffffffcc;
+  color: #ffffffd9;
+  text-shadow: 0 0 10px #ffffff38;
 }
 .minititle .text-block-2::before,
 .minititle-copy .text-block-2::before {
@@ -1799,62 +1792,63 @@ img {
   opacity: .8;
 }
 
-/* -- footer labels: pixel -- */
+/* -- footer: tracked labels with soft glow -- */
 .social-handle {
-  font-family: Tfpx, Jpbgm, Arial, sans-serif;
-  font-size: 13px;
+  font-weight: 700;
   letter-spacing: 2px;
+  text-shadow: 0 0 10px #ffffff38;
 }
 .text-block-6 {
-  font-family: Tfpx, Jpbgm, Arial, sans-serif;
-  font-size: 15px;
+  font-weight: 900;
   letter-spacing: 2.5px;
+  text-shadow: 0 0 12px #ffffff40;
 }
 
-/* -- everything below: site font, deliberately styled -- */
+/* -- all CTA buttons: display-weight labels -- */
+.button {
+  font-weight: 900;
+  font-stretch: 110%;
+  letter-spacing: 1.5px;
+  box-shadow: 4px 4px #000;
+}
 
-/* pain-point statements: weight + tracking for punch (color untouched) */
+/* -- pain-point statements: punch, colors untouched -- */
 .paragraph {
   letter-spacing: 1px;
   font-weight: 700;
+  text-shadow: 0 0 14px #ffffff2e;
 }
 
-/* section intro paragraphs */
+/* -- section intro paragraphs -- */
 .paragraph-2 {
   letter-spacing: 1.5px;
-  font-weight: 400;
   color: #ffffffe6;
+  text-shadow: 0 0 12px #ffffff30;
 }
 
-/* feature card titles: heavy + tracked */
-.text-block-4 {
+/* -- feature cards: distressed titles, glowing descriptions -- */
+.title .text-block-4 {
   font-weight: 900;
   font-stretch: 110%;
   letter-spacing: 1.5px;
   font-size: 18px;
+  filter: url("#tfDistressSmall");
 }
-
-/* feature descriptions */
 .paragraph-3 {
   letter-spacing: 1px;
   color: #ffffffd9;
+  text-shadow: 0 0 10px #ffffff2b;
 }
 
-/* pricing: display-weight numerals, tracked descriptor, stamped plan tag */
-.text-block-5 {
-  letter-spacing: 1px;
-}
+/* -- pricing: display numerals, stamped plan tag -- */
+.text-block-5 { letter-spacing: 1px; }
 .text-span-2 {
   font-weight: 900;
   font-stretch: 125%;
   letter-spacing: 0;
   font-size: 46px;
 }
-.text-span-103 {
-  letter-spacing: 1px;
-  font-size: 14px;
-  line-height: 22px;
-}
+.text-span-103 { letter-spacing: 1px; font-size: 14px; line-height: 22px; }
 .text-span-104 {
   letter-spacing: 2px;
   font-size: 13px;
@@ -1863,41 +1857,50 @@ img {
   display: inline-block;
 }
 
-/* clip program: heavy step titles, quiet notes, stamped numbers */
+/* -- clip program: dark cards, hero-glow text -- */
+.clip-step {
+  background-color: var(--black);
+  border: 5px solid var(--white);
+  border-color: var(--white) #fff #fff var(--white);
+  box-shadow: 7px 7px #000000b3;
+}
+.clip-num {
+  font-weight: 900;
+  font-stretch: 125%;
+  font-size: 46px;
+  letter-spacing: 0;
+  color: #ffffff45;
+  text-shadow: 0 0 16px #ffffff3d;
+}
 .clip-step-title {
   font-weight: 900;
   font-stretch: 110%;
   letter-spacing: 1.5px;
   font-size: 20px;
+  color: #fff;
+  filter: url("#tfDistressSmall");
 }
 .clip-step-desc {
   letter-spacing: 1px;
+  color: #ffffffe0;
+  text-shadow: 0 0 10px #ffffff30;
 }
 .clip-note {
   letter-spacing: 1px;
   font-size: 12px;
-}
-.clip-num {
-  font-weight: 900;
-  font-stretch: 125%;
-  font-size: 44px;
+  color: #ffffffb5;
+  border-top: 3px solid #ffffff22;
 }
 .clip-warning {
   font-weight: 700;
   letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 0 0 12px #ffffff38;
   border: 4px solid #ffd22d;
-  box-shadow: 6px 6px #000;
+  box-shadow: 6px 6px #000000b3;
 }
 
-/* buttons outside navbar: same pixel label language as nav */
-.button {
-  font-family: Tfpx, Jpbgm, Arial, sans-serif;
-  font-size: 14px;
-  letter-spacing: 1.5px;
-  box-shadow: 4px 4px #000;
-}
-
-/* punchline heading gets the real distress */
+/* -- punchline heading gets the full distress -- */
 .text-block-copy-copy-copy-copy-copy {
   filter: url("#tfDistress");
 }
