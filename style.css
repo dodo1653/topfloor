@@ -293,7 +293,7 @@ img {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 500px;
+  top: 800px;
   left: 150px;
   box-shadow: inset 3px 3px #fff3, 7px 7px #000;
 }
@@ -323,7 +323,7 @@ img {
   padding: .75rem 2rem;
   display: flex;
   position: absolute;
-  top: 1500px;
+  top: 1800px;
   right: 250px;
   box-shadow: inset 3px 3px #fff3, 7px 7px #000;
   align-items: center;
@@ -338,7 +338,7 @@ img {
   position: absolute;
   width: 400px;
   height: 100px;
-  top: 2000px;
+  top: 2800px;
   left: 200px;
   box-shadow: inset 3px 3px #fff3, 7px 7px #000;
   align-items: center;
@@ -351,7 +351,7 @@ img {
   padding: .75rem 2rem;
   display: flex;
   position: absolute;
-  bottom: 200px;
+  bottom: 400px;
   right: 50px;
   width: 400px;
   height: 100px;
@@ -366,7 +366,7 @@ img {
   padding: .75rem 2rem;
   display: flex;
   position: absolute;
-  bottom: -200px;
+  bottom: -100px;
   right: 75px;
   width: 400px;
   height: 100px;
