@@ -286,41 +286,41 @@
 
                 <!-- HEAVY edge erosion: big irregular bites out of the contour -->
                 <feMorphology in="warped" operator="erode" radius="1" result="eroded"/>
-                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="21" result="edgeNoise"/>
-                <feColorMatrix in="edgeNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3 3 3 0 -4.5" result="edgeCut"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="4" seed="21" result="edgeNoise"/>
+                <feColorMatrix in="edgeNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3.5 3.5 3.5 0 -5.2" result="edgeCut"/>
                 <feComposite in="eroded" in2="edgeCut" operator="in" result="edgeEaten"/>
                 <feMerge result="afterEdge">
                     <feMergeNode in="warped"/>
                     <feMergeNode in="edgeEaten"/>
                 </feMerge>
 
-                <!-- large stains: worn patches inside letters -->
-                <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="33" result="stainNoise"/>
-                <feColorMatrix in="stainNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.5 2.5 2.5 0 -4.2" result="stainCut"/>
+                <!-- LARGE stains: big worn patches inside letters -->
+                <feTurbulence type="fractalNoise" baseFrequency="0.006" numOctaves="3" seed="33" result="stainNoise"/>
+                <feColorMatrix in="stainNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3 3 3 0 -4.8" result="stainCut"/>
                 <feComposite in="afterEdge" in2="stainCut" operator="in" result="stainArea"/>
                 <feComposite in="afterEdge" in2="stainArea" operator="out" result="afterStains"/>
 
-                <!-- dense specks: clusters of tiny holes -->
-                <feTurbulence type="fractalNoise" baseFrequency="0.12" numOctaves="2" seed="8" result="speckNoise"/>
-                <feColorMatrix in="speckNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.2 2.2 2.2 0 -4.5" result="speckCut"/>
+                <!-- medium specks: gritty texture -->
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="8" result="speckNoise"/>
+                <feColorMatrix in="speckNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.8 2.8 2.8 0 -5" result="speckCut"/>
                 <feComposite in="afterStains" in2="speckCut" operator="in" result="speckArea"/>
                 <feComposite in="afterStains" in2="speckArea" operator="out" result="afterSpecks"/>
 
-                <!-- vertical streaks / drips -->
-                <feTurbulence type="fractalNoise" baseFrequency="0.08 0.003" numOctaves="3" seed="55" result="dripNoise"/>
-                <feColorMatrix in="dripNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.8 2.8 2.8 0 -4.8" result="dripCut"/>
+                <!-- vertical streaks / drips — tall thin features -->
+                <feTurbulence type="fractalNoise" baseFrequency="0.06 0.002" numOctaves="3" seed="55" result="dripNoise"/>
+                <feColorMatrix in="dripNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3.2 3.2 3.2 0 -5.2" result="dripCut"/>
                 <feComposite in="afterSpecks" in2="dripCut" operator="in" result="dripArea"/>
                 <feComposite in="afterSpecks" in2="dripArea" operator="out" result="afterDrips"/>
 
                 <!-- horizontal scratches -->
-                <feTurbulence type="fractalNoise" baseFrequency="0.01 0.6" numOctaves="2" seed="77" result="scratchNoise"/>
-                <feColorMatrix in="scratchNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.0 2.0 2.0 0 -4.2" result="scratchCut"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.008 0.5" numOctaves="2" seed="77" result="scratchNoise"/>
+                <feColorMatrix in="scratchNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.5 2.5 2.5 0 -4.8" result="scratchCut"/>
                 <feComposite in="afterDrips" in2="scratchCut" operator="in" result="scratchArea"/>
                 <feComposite in="afterDrips" in2="scratchArea" operator="out" result="afterScratches"/>
 
                 <!-- uneven ink density: dark veil in low-density zones -->
-                <feTurbulence type="fractalNoise" baseFrequency="0.18" numOctaves="2" seed="12" result="densNoise"/>
-                <feColorMatrix in="densNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1.8 1.8 1.8 0 -2.8" result="densCut"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.008" numOctaves="2" seed="12" result="densNoise"/>
+                <feColorMatrix in="densNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.2 2.2 2.2 0 -3.5" result="densCut"/>
                 <feFlood flood-color="#000000" result="black"/>
                 <feComposite in="black" in2="afterScratches" operator="in" result="blackInShape"/>
                 <feComposite in="blackInShape" in2="densCut" operator="in" result="densityVeil"/>
@@ -347,19 +347,19 @@
                 <feTurbulence type="fractalNoise" baseFrequency="0.015 0.02" numOctaves="2" seed="4" result="warpNoise"/>
                 <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="2.5" xChannelSelector="R" yChannelSelector="G" result="warped"/>
                 <feMorphology in="warped" operator="erode" radius="0.5" result="eroded"/>
-                <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" seed="21" result="edgeNoise"/>
-                <feColorMatrix in="edgeNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3 3 3 0 -5" result="edgeCut"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="21" result="edgeNoise"/>
+                <feColorMatrix in="edgeNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3.5 3.5 3.5 0 -5.5" result="edgeCut"/>
                 <feComposite in="eroded" in2="edgeCut" operator="in" result="edgeEaten"/>
                 <feMerge result="afterEdge">
                     <feMergeNode in="warped"/>
                     <feMergeNode in="edgeEaten"/>
                 </feMerge>
-                <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="3" seed="33" result="stainNoise"/>
-                <feColorMatrix in="stainNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.5 2.5 2.5 0 -4.5" result="stainCut"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.008" numOctaves="3" seed="33" result="stainNoise"/>
+                <feColorMatrix in="stainNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3 3 3 0 -5" result="stainCut"/>
                 <feComposite in="afterEdge" in2="stainCut" operator="in" result="stainArea"/>
                 <feComposite in="afterEdge" in2="stainArea" operator="out" result="afterStains"/>
-                <feTurbulence type="fractalNoise" baseFrequency="0.15" numOctaves="2" seed="8" result="speckNoise"/>
-                <feColorMatrix in="speckNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.2 2.2 2.2 0 -4.8" result="speckCut"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="8" result="speckNoise"/>
+                <feColorMatrix in="speckNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.8 2.8 2.8 0 -5.2" result="speckCut"/>
                 <feComposite in="afterStains" in2="speckCut" operator="in" result="speckArea"/>
                 <feComposite in="afterStains" in2="speckArea" operator="out" result="afterSpecks"/>
                 <feGaussianBlur in="afterSpecks" stdDeviation="0.3" result="letters"/>
