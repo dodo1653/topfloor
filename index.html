@@ -275,39 +275,52 @@
         <!-- Photocopy-worn display type: subtle organic degradation -->
         <svg width="0" height="0" style="position:absolute" aria-hidden="true">
             <filter id="tfDistress" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
-                <!-- SINGLE noise texture for all effects — 1 turbulence instead of 6 -->
-                <feTurbulence type="fractalNoise" baseFrequency="0.015 0.02" numOctaves="3" seed="4" result="noise"/>
+                <!-- gentle contour warp for rough edges -->
+                <feTurbulence type="fractalNoise" baseFrequency="0.015 0.02" numOctaves="2" seed="4" result="warpNoise"/>
+                <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="2" xChannelSelector="R" yChannelSelector="G" result="warped"/>
 
-                <!-- gentle contour warp -->
-                <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" result="warped"/>
-
-                <!-- WHITE GLOW from clean shape -->
+                <!-- WHITE GLOW: bloom from clean warped shape -->
                 <feMorphology in="warped" operator="dilate" radius="3" result="bloomShape"/>
                 <feGaussianBlur in="bloomShape" stdDeviation="5" result="bloomBlur"/>
                 <feFlood flood-color="#ffffff" result="white"/>
                 <feComposite in="white" in2="bloomBlur" operator="in" result="bloomWhite"/>
                 <feColorMatrix in="bloomWhite" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.2 0" result="bloom"/>
 
-                <!-- edge erosion using same noise, remapped -->
-                <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3.5 3.5 3.5 0 -5.8" result="edgeCut"/>
+                <!-- edge nips -->
                 <feMorphology in="warped" operator="erode" radius="0.5" result="eroded"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="4" seed="21" result="edgeNoise"/>
+                <feColorMatrix in="edgeNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3.5 3.5 3.5 0 -5.8" result="edgeCut"/>
                 <feComposite in="eroded" in2="edgeCut" operator="in" result="edgeEaten"/>
                 <feMerge result="afterEdge">
                     <feMergeNode in="warped"/>
                     <feMergeNode in="edgeEaten"/>
                 </feMerge>
 
-                <!-- stains + specks from same noise, different remap -->
-                <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3 3 3 0 -5.6" result="stainCut"/>
+                <!-- subtle stains -->
+                <feTurbulence type="fractalNoise" baseFrequency="0.006" numOctaves="3" seed="33" result="stainNoise"/>
+                <feColorMatrix in="stainNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3 3 3 0 -5.6" result="stainCut"/>
                 <feComposite in="afterEdge" in2="stainCut" operator="in" result="stainArea"/>
                 <feComposite in="afterEdge" in2="stainArea" operator="out" result="afterStains"/>
 
-                <!-- drips + scratches from same noise, tight remap -->
-                <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.8 2.8 2.8 0 -5.5" result="detailCut"/>
-                <feComposite in="afterStains" in2="detailCut" operator="in" result="detailArea"/>
-                <feComposite in="afterStains" in2="detailArea" operator="out" result="degraded"/>
+                <!-- light specks -->
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="8" result="speckNoise"/>
+                <feColorMatrix in="speckNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.8 2.8 2.8 0 -5.6" result="speckCut"/>
+                <feComposite in="afterStains" in2="speckCut" operator="in" result="speckArea"/>
+                <feComposite in="afterStains" in2="speckArea" operator="out" result="afterSpecks"/>
 
-                <!-- FINAL: bloom behind degraded text -->
+                <!-- faint vertical drips -->
+                <feTurbulence type="fractalNoise" baseFrequency="0.06 0.002" numOctaves="3" seed="55" result="dripNoise"/>
+                <feColorMatrix in="dripNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3.2 3.2 3.2 0 -5.6" result="dripCut"/>
+                <feComposite in="afterSpecks" in2="dripCut" operator="in" result="dripArea"/>
+                <feComposite in="afterSpecks" in2="dripArea" operator="out" result="afterDrips"/>
+
+                <!-- faint scratches -->
+                <feTurbulence type="fractalNoise" baseFrequency="0.008 0.5" numOctaves="2" seed="77" result="scratchNoise"/>
+                <feColorMatrix in="scratchNoise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.5 2.5 2.5 0 -5.5" result="scratchCut"/>
+                <feComposite in="afterDrips" in2="scratchCut" operator="in" result="scratchArea"/>
+                <feComposite in="afterDrips" in2="scratchArea" operator="out" result="degraded"/>
+
+                <!-- FINAL: white bloom behind degraded text -->
                 <feGaussianBlur in="degraded" stdDeviation="0.2" result="letters"/>
                 <feMerge>
                     <feMergeNode in="bloom"/>
