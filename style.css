@@ -2002,8 +2002,7 @@ img {
 @supports ((mask-image: url("assets/erosion.png")) or (-webkit-mask-image: url("assets/erosion.png"))) {
   .text-block-copy,
   .text-block-copy-copy-copy,
-  .text-block-copy-copy-copy-copy,
-  .text-block-copy-copy-copy-copy-copy {
+  .text-block-copy-copy-copy-copy {
     background-image: none;
     -webkit-text-fill-color: #ffffff;
     color: #ffffff;
