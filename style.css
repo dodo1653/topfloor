@@ -2055,12 +2055,12 @@ img {
 
 /* ==== v6: gold punchline, footer overhaul, tighter section rhythm ==== */
 
-/* -- punchline heading: gold ink with distress filter + gold glow -- */
+/* -- punchline heading: gold ink, no distress filter -- */
 .gold-punch {
   background-image: none !important;
   -webkit-text-fill-color: #ffd22d;
   color: #ffd22d;
-  -webkit-text-stroke: 1px #ffd22d;
+  filter: none;
   text-shadow:
     0 0 15px rgba(255, 210, 45, 0.5),
     0 0 50px rgba(255, 210, 45, 0.2),

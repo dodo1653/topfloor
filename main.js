@@ -25,14 +25,18 @@ window.addEventListener('orientationchange', () => {
   if (window.ScrollTrigger) ScrollTrigger.refresh();
 });
 
-// Anchor links glide through Lenis instead of jumping
+// Anchor links glide through Lenis instead of jumping — slow cinematic scroll
 const anchors = document.querySelectorAll('a[href^="#"]');
 anchors.forEach((a) => {
   a.addEventListener('click', (e) => {
     const id = a.getAttribute('href');
     if (id.length > 1 && document.querySelector(id)) {
       e.preventDefault();
-      lenis.scrollTo(id, { offset: -80, duration: 1.4 });
+      lenis.scrollTo(id, {
+        offset: -80,
+        duration: 2.8,
+        easing: (t) => 1 - Math.pow(1 - t, 3)
+      });
     }
   });
 });
