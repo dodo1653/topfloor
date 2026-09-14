@@ -323,7 +323,7 @@ img {
   padding: .75rem 2rem;
   display: flex;
   position: absolute;
-  top: 800px;
+  top: 1200px;
   right: 250px;
   box-shadow: inset 3px 3px #fff3, 7px 7px #000;
   align-items: center;
@@ -338,7 +338,7 @@ img {
   position: absolute;
   width: 400px;
   height: 100px;
-  top: 900px;
+  top: 2000px;
   left: 200px;
   box-shadow: inset 3px 3px #fff3, 7px 7px #000;
   align-items: center;
@@ -351,7 +351,7 @@ img {
   padding: .75rem 2rem;
   display: flex;
   position: absolute;
-  bottom: 200px;
+  bottom: 800px;
   right: 50px;
   width: 400px;
   height: 100px;
@@ -366,7 +366,7 @@ img {
   padding: .75rem 2rem;
   display: flex;
   position: absolute;
-  bottom: -400px;
+  bottom: 200px;
   right: 75px;
   width: 400px;
   height: 100px;
@@ -1022,8 +1022,7 @@ img {
   .block-2,
   .block-3,
   .block-4,
-  .block-5,
-  .block-6 {
+  .block-5 {
     /* Remove these lines: */
     /* position: static !important; */
     /* transform: none !important; */
@@ -1813,7 +1812,7 @@ img {
 .clip-step {
   background-color: var(--white);
   border: 5px solid #000;
-  box-shadow: 7px 7px #000;
+  box-shadow: 7px 7px #000, 0 0 30px rgba(255, 255, 255, 0.08);
   padding: 2.25rem 2rem 2.5rem;
   gap: 16px;
 }
@@ -1823,7 +1822,7 @@ img {
 }
 .clip-step .clip-step-title {
   color: var(--black);
-  text-shadow: none;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
 }
 .clip-step .clip-step-desc {
   color: #0f0f0fd0;
@@ -2014,7 +2013,6 @@ img {
 
 /* display text: NO glow, NO halo, NO shadow — the filter's faint bloom is the only light */
 .text-block,
-.text-block-3,
 .text-block-copy,
 .text-block-copy-copy,
 .text-block-copy-copy-copy,

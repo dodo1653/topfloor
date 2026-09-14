@@ -102,18 +102,6 @@ gsap.to(".block-5", {
   delay: 0.8
 });
 
-gsap.to(".block-6", {
-  yPercent: isSmallScreen ? -750 : -3750,
-  scrollTrigger: {
-    trigger: ".section-2",
-    start: "top bottom",
-    end: "bottom top",
-    scrub: true,
-  },
-  ease: "none",
-  delay: 1
-});
-
 // Magnifying glass spiral "scanning" animation on loop (no initial jump)
 
 gsap.to(".image-4", {
