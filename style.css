@@ -2051,14 +2051,16 @@ img {
 
 /* ==== v6: gold punchline, footer overhaul, tighter section rhythm ==== */
 
-/* -- punchline heading: gold ink, NO filter (its white bloom rings gold glyphs) -- */
+/* -- punchline heading: gold ink with distress filter + gold glow -- */
 .gold-punch {
   background-image: none !important;
   -webkit-text-fill-color: #ffd22d;
   color: #ffd22d;
-  filter: none;
-  text-shadow: 0 0 14px;
-  -webkit-text-stroke-color: #ffd22d;
+  -webkit-text-stroke: 1px #ffd22d;
+  text-shadow:
+    0 0 15px rgba(255, 210, 45, 0.5),
+    0 0 50px rgba(255, 210, 45, 0.2),
+    0 0 100px rgba(255, 210, 45, 0.1);
 }
 
 /* -- tight section rhythm: even ~5rem joins instead of big voids -- */
