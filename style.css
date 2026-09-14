@@ -338,7 +338,7 @@ img {
   position: absolute;
   width: 400px;
   height: 100px;
-  top: 2500px;
+  top: 2000px;
   left: 200px;
   box-shadow: inset 3px 3px #fff3, 7px 7px #000;
   align-items: center;
@@ -351,7 +351,7 @@ img {
   padding: .75rem 2rem;
   display: flex;
   position: absolute;
-  bottom: 500px;
+  bottom: 200px;
   right: 50px;
   width: 400px;
   height: 100px;
@@ -2000,7 +2000,6 @@ img {
    specks, worn patches, scratches, density clouds) — applied on a mid-size tile
    so damage reads at every heading scale */
 @supports ((mask-image: url("assets/erosion.png")) or (-webkit-mask-image: url("assets/erosion.png"))) {
-  .text-block-3,
   .text-block-copy,
   .text-block-copy-copy-copy,
   .text-block-copy-copy-copy-copy,
