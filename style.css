@@ -257,11 +257,13 @@ img {
   padding-left: 2rem;
   padding-right: 2rem;
   position: relative;
-  overflow: visible;
+  overflow: clip;
+  contain: layout style;
 }
 
 .text-block-3 {
   filter: url("#tfDistress");
+  will-change: filter;
   color: #fff;
   font-family: Jpbgm, Arial, sans-serif;
   font-size: 80px;
@@ -296,6 +298,7 @@ img {
   top: 300px;
   left: 150px;
   box-shadow: inset 3px 3px #fff3, 7px 7px #000;
+  will-change: transform;
 }
 
 .block:hover {
@@ -328,6 +331,7 @@ img {
   box-shadow: inset 3px 3px #fff3, 7px 7px #000;
   align-items: center;
   justify-content: center;
+  will-change: transform;
 }
 
 .block-3 {
@@ -343,6 +347,7 @@ img {
   box-shadow: inset 3px 3px #fff3, 7px 7px #000;
   align-items: center;
   justify-content: center;
+  will-change: transform;
 }
 
 .block-4 {
@@ -358,6 +363,7 @@ img {
   box-shadow: inset 3px 3px #fff3, 7px 7px #000;
   align-items: center;
   justify-content: center;
+  will-change: transform;
 }
 
 .block-5 {
@@ -373,6 +379,7 @@ img {
   box-shadow: inset 3px 3px #fff3, 7px 7px #000;
   align-items: center;
   justify-content: center;
+  will-change: transform;
 }
 
 .block-6 {
