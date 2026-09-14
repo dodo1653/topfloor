@@ -266,6 +266,10 @@ img {
   font-family: Jpbgm, Arial, sans-serif;
   font-size: 80px;
   line-height: 80px;
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.5),
+    0 0 60px rgba(255, 255, 255, 0.25),
+    0 0 120px rgba(255, 255, 255, 0.12);
 }
 
 .text-span {
