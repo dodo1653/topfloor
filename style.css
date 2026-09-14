@@ -1993,10 +1993,8 @@ img {
    specks, worn patches, scratches, density clouds) — applied on a mid-size tile
    so damage reads at every heading scale */
 @supports ((mask-image: url("assets/erosion.png")) or (-webkit-mask-image: url("assets/erosion.png"))) {
-  .text-block,
   .text-block-3,
   .text-block-copy,
-  .text-block-copy-copy,
   .text-block-copy-copy-copy,
   .text-block-copy-copy-copy-copy,
   .text-block-copy-copy-copy-copy-copy {
@@ -2173,19 +2171,18 @@ img {
   background-color: transparent;
 }
 
-/* "top floor" — slightly thicker stroke, stronger glow */
+/* "top floor" — slightly thicker stroke, subtle glow */
 .text-block-copy-copy {
   -webkit-text-stroke: 1px #ffffff;
   text-shadow:
-    0 0 15px rgba(255, 255, 255, 0.5),
-    0 0 50px rgba(255, 255, 255, 0.25),
-    0 0 100px rgba(255, 255, 255, 0.12);
+    0 0 12px rgba(255, 255, 255, 0.3),
+    0 0 40px rgba(255, 255, 255, 0.12);
 }
 
-/* "Get Paid To / Clip with" — matching glow */
+/* "Get Paid To / Clip with" — matching subtle glow */
 .text-block {
   text-shadow:
-    0 0 15px rgba(255, 255, 255, 0.45),
-    0 0 45px rgba(255, 255, 255, 0.2);
+    0 0 12px rgba(255, 255, 255, 0.25),
+    0 0 35px rgba(255, 255, 255, 0.1);
 }
 

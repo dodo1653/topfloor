@@ -329,13 +329,13 @@
                     <feMergeNode in="densityVeil"/>
                 </feMerge>
 
-                <!-- bloom / glow bleed -->
+                <!-- bloom / glow bleed — subtle, not overexposed -->
                 <feGaussianBlur in="lettersDense" stdDeviation="0.3" result="letters"/>
-                <feMorphology in="lettersDense" operator="dilate" radius="4" result="bloomShape"/>
-                <feGaussianBlur in="bloomShape" stdDeviation="5" result="bloomBlur"/>
+                <feMorphology in="lettersDense" operator="dilate" radius="3" result="bloomShape"/>
+                <feGaussianBlur in="bloomShape" stdDeviation="4" result="bloomBlur"/>
                 <feFlood flood-color="#ffffff" result="white"/>
                 <feComposite in="white" in2="bloomBlur" operator="in" result="bloomWhite"/>
-                <feColorMatrix in="bloomWhite" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.4 0" result="bloom"/>
+                <feColorMatrix in="bloomWhite" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.2 0" result="bloom"/>
                 <feMerge>
                     <feMergeNode in="bloom"/>
                     <feMergeNode in="letters"/>
