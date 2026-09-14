@@ -2163,17 +2163,12 @@ img {
   background-attachment: fixed;
 }
 
-/* ==== hero section: distressed text — single erosion mask ==== */
-/* SVG filter (#tfDistress) = edge warp, stains, scratches, bloom
-   erosion.png = ink degradation patches + vertical streaks (single mask)
-   text-stroke = weight, text-shadow = cinematic glow */
+/* ==== hero section: distressed text — SVG filter handles everything ==== */
+/* No CSS mask — the SVG filter (#tfDistress) creates all degradation.
+   text-stroke = weight, text-shadow = cinematic glow. */
 
 .text-block,
 .text-block-copy-copy {
-  -webkit-mask-image: url("assets/erosion.png");
-  mask-image: url("assets/erosion.png");
-  -webkit-mask-size: 800px 800px;
-  mask-size: 800px 800px;
   -webkit-text-stroke: 0.5px #ffffff;
   background-color: transparent;
 }
