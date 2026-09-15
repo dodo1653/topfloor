@@ -154,8 +154,8 @@ img { max-width: 100%; display: inline-block; }
    solid fills, so shadows paint cleanly behind them) */
 
 .section-heading {
-  font-size: clamp(2.2rem, 5.2vw, 4.2rem);
-  line-height: 1.02;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  line-height: 1.15;
   text-align: center;
   padding: 0 1rem;
 }
@@ -349,8 +349,8 @@ img { max-width: 100%; display: inline-block; }
 
 .mentor-pfp {
   border-radius: 50%;
-  border: 3px solid var(--gold);
-  box-shadow: 0 0 22px rgba(214, 222, 232, 0.4);
+  border: 3px solid #ffd22d;
+  box-shadow: 0 0 22px rgba(255, 210, 45, 0.45);
   margin-bottom: 1.2rem;
 }
 
