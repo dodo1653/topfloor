@@ -2278,6 +2278,23 @@ body {
   background-image: linear-gradient(180deg, #7a24c4 0%, #ae3cff 44%, #e7c2ff 58%, #ae3cff 74%, #5f1a9b 100%);
 }
 
+/* "Pricing That Fits You": royal foil — deep purple body with a champagne-gold
+   light streak sweeping through it (matches the money icon beside it).
+   NO SVG filter here: gradient-clipped text + reference filter makes Chrome
+   rasterize the whole border box = the rectangle-border bug. Glow instead via
+   text-shadow, which paints cleanly behind the clipped glyphs. */
+.text-block-copy-copy-copy {
+  background-image: linear-gradient(165deg,
+    #3c0d6e 0%, #8a2be2 24%, #c86bff 38%,
+    #ffd22d 50%, #fff3b0 55%, #ffd22d 61%,
+    #b45cff 76%, #5f1a9b 100%);
+  filter: none;
+  text-shadow:
+    0 0 14px rgba(174, 60, 255, 0.45),
+    0 0 34px rgba(138, 43, 226, 0.28),
+    0 0 70px rgba(255, 210, 45, 0.16);
+}
+
 /* "IS THIS YOU?": EXACT original repo treatment (b074142 / topfloors.vercel.app):
    white ink, 3px white stroke, NO css shadow, and the ORIGINAL heavy
    photocopy-worn filter (bloom, edge nips, stains, specks, drips, scratches) */
@@ -2296,6 +2313,27 @@ body {
   -webkit-text-fill-color: #ffffff;
   color: #ffffff;
   text-shadow: none;
+}
+
+/* ═══ "EXPLORE THE DISCORD": exact original repo treatment (b074142 era) —
+   white ink, 3px white stroke, erosion ink-mask, original heavy photocopy
+   filter with its bloom. Scoped to the journey card heading ONLY. ═══ */
+.scannersacademy-block .text-block-copy {
+  background-image: none;
+  -webkit-text-fill-color: #ffffff;
+  color: #ffffff;
+  -webkit-text-stroke: 3px #ffffff;
+  text-shadow: none;
+  filter: url("#tfDistressOriginal");
+  -webkit-mask-image: url("assets/erosion.png");
+  mask-image: url("assets/erosion.png");
+  -webkit-mask-size: 420px 420px;
+  mask-size: 420px 420px;
+  /* the mask + filter both clip at the element's border box, which sliced the
+     bloom into a faint rectangle. Pad the box outward (negative margins keep
+     the visual position identical) so the halo dies off before the edge. */
+  padding: 70px 90px;
+  margin: -70px -90px;
 }
 
 /* money icon riding the pricing headline (same as hero) — filter-free so

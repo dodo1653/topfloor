@@ -282,7 +282,7 @@
         <!-- Knife-cut print: organic contour warp + thin blade scars through the
              ink + press grain, over a warm cinematic halo (14 primitives) -->
         <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-            <filter id="tfDistress" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
+            <filter id="tfDistress" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
                 <!-- organic contour wobble: coarse + fine displacement for ragged edges -->
                 <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="4" result="warpCoarse"/>
                 <feDisplacementMap in="SourceGraphic" in2="warpCoarse" scale="1.6" xChannelSelector="R" yChannelSelector="G" result="warped1"/>
@@ -299,7 +299,7 @@
                 <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.5 0.5 0.5 0 0" result="grainA"/>
                 <feComposite in="scarred" in2="grainA" operator="in" result="grainInk"/>
                 <feComponentTransfer in="grainInk" result="ink">
-                    <feFuncA type="linear" slope="0.94" intercept="0.06"/>
+                    <feFuncA type="linear" slope="1" intercept="0"/>
                 </feComponentTransfer>
 
                 <!-- warm halo behind everything (scars read as glowing cracks) -->
@@ -313,7 +313,7 @@
 
             <!-- ORIGINAL photocopy-worn filter, verbatim from the repo's initial
                  state — used ONLY by the IS THIS YOU heading -->
-            <filter id="tfDistressOriginal" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+            <filter id="tfDistressOriginal" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
                 <!-- gentle contour warp for rough edges -->
                 <feTurbulence type="fractalNoise" baseFrequency="0.015 0.02" numOctaves="2" seed="4" result="warpNoise"/>
                 <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="2" xChannelSelector="R" yChannelSelector="G" result="warped"/>
@@ -370,7 +370,7 @@
 
             <!-- flat variant: warp + scars + grain, NO halo (for headings that
                  must sit perfectly crisp on the page) -->
-            <filter id="tfDistressFlat" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
+            <filter id="tfDistressFlat" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
                 <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="4" result="warpCoarse"/>
                 <feDisplacementMap in="SourceGraphic" in2="warpCoarse" scale="1.6" xChannelSelector="R" yChannelSelector="G" result="warped1"/>
                 <feTurbulence type="fractalNoise" baseFrequency="0.09 0.13" numOctaves="2" seed="29" result="warpFine"/>
@@ -382,19 +382,19 @@
                 <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.5 0.5 0.5 0 0" result="grainA"/>
                 <feComposite in="scarred" in2="grainA" operator="in" result="grainInk"/>
                 <feComponentTransfer in="grainInk" result="ink">
-                    <feFuncA type="linear" slope="0.94" intercept="0.06"/>
+                    <feFuncA type="linear" slope="1" intercept="0"/>
                 </feComponentTransfer>
             </filter>
 
             <!-- small-size variant: gentle ragged edge + light grain, no scars -->
-            <filter id="tfDistressSmall" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
+            <filter id="tfDistressSmall" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
                 <feTurbulence type="fractalNoise" baseFrequency="0.02 0.03" numOctaves="2" seed="5" result="warpCoarse"/>
                 <feDisplacementMap in="SourceGraphic" in2="warpCoarse" scale="1.2" xChannelSelector="R" yChannelSelector="G" result="warped"/>
                 <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="11" result="grain"/>
                 <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.7 0.7 0.7 0 0" result="grainA"/>
                 <feComposite in="warped" in2="grainA" operator="in" result="grainInk"/>
                 <feComponentTransfer in="grainInk" result="ink">
-                    <feFuncA type="linear" slope="0.95" intercept="0.05"/>
+                    <feFuncA type="linear" slope="1" intercept="0"/>
                 </feComponentTransfer>
                 <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="haloBlur"/>
                 <feColorMatrix in="haloBlur" type="matrix" values="0 0 0 0 1  0 0 0 0 0.93  0 0 0 0 0.75  0 0 0 0.22 0" result="halo"/>
