@@ -2278,14 +2278,16 @@ body {
   background-image: linear-gradient(180deg, #7a24c4 0%, #ae3cff 44%, #e7c2ff 58%, #ae3cff 74%, #5f1a9b 100%);
 }
 
-/* "IS THIS YOU?": white ink, NO glow AND no filter halo — flat-filter variant
-   keeps the print grain + knife scars but emits zero cloud around the letters */
+/* "IS THIS YOU?": EXACT original repo treatment (b074142 / topfloors.vercel.app):
+   white ink, 3px white stroke, NO css shadow, and the ORIGINAL heavy
+   photocopy-worn filter (bloom, edge nips, stains, specks, drips, scratches) */
 .text-block-3 {
   background-image: none;
   -webkit-text-fill-color: #ffffff;
   color: #ffffff;
+  -webkit-text-stroke: 3px #ffffff;
   text-shadow: none;
-  filter: url("#tfDistressFlat");
+  filter: url("#tfDistressOriginal");
 }
 
 /* "The Clip Program": back to white ink like the other display headings */
@@ -2302,15 +2304,15 @@ body {
   position: relative;
   display: inline-block;
 }
-/* heading must fill the wrap: legacy width:65% + shrink-to-fit wrapper
-   broke section centering and left the icon anchored to a phantom edge */
+/* heading back to its original two-line break (Pricing That / Fits You);
+   width freed from the legacy 65% that broke section centering */
 .pricing-title-wrap .text-block-copy-copy-copy {
   width: 100%;
 }
 .image-money-pricing {
   position: absolute;
   top: -40px;
-  right: -34px;
+  right: -40px;
   width: 110px;
   z-index: 2;
   pointer-events: none;
@@ -2375,6 +2377,31 @@ body {
 
 /* dark-ink contexts: no white halo (it would frost the letters).
    Light cards (.block/.block-5) keep their crisp white-core glow from above. */
+
+/* glowy card text (boosted — subtle values were invisible on the dark cards):
+   dark cards get a real white bloom, light cards a hot white core */
+.block-2 .paragraph,
+.block-3 .paragraph {
+  text-shadow:
+    0 0 2px rgba(255, 255, 255, .9),
+    0 0 10px rgba(255, 255, 255, .55),
+    0 0 24px rgba(255, 255, 255, .32),
+    0 0 48px rgba(255, 255, 255, .18);
+}
+.block .paragraph,
+.block-5 .paragraph {
+  text-shadow:
+    0 0 2px rgba(255, 255, 255, .95),
+    0 1px 0 rgba(255, 255, 255, .5),
+    0 0 14px rgba(255, 255, 255, .4);
+}
+.block-4 .paragraph-1 {
+  text-shadow:
+    0 0 2px rgba(255, 255, 255, .95),
+    0 1px 0 rgba(255, 255, 255, .5),
+    0 0 14px rgba(255, 255, 255, .4);
+}
+
 .paragraph-1,
 .block-6 .paragraph {
   text-shadow: none;
