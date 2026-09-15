@@ -1,10 +1,13 @@
 // Lenis smooth scrolling, driven by GSAP's ticker so ScrollTrigger stays in sync
 // (native touch scrolling on phones — Lenis sync makes mobile feel rubber-bandy)
 const lenis = new Lenis({
-  duration: 1.1,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  duration: 2.4,
+  easing: (t) => 1 - Math.pow(1 - t, 4),
   smoothWheel: true,
   syncTouch: false,
+  wheelMultiplier: 0.6,
+  touchMultiplier: 0.8,
+  lerp: null,
 });
 lenis.on('scroll', ScrollTrigger.update);
 gsap.ticker.add((time) => {
@@ -41,9 +44,7 @@ anchors.forEach((a) => {
   });
 });
 
-gsap.registerPlugin(ScrollTrigger);
-
-const isSmallScreen = window.innerWidth < 1300;
+gsap.registerPlugin(ScrollTrigger);const isSmallScreen = window.innerWidth < 1300;
 
 // Add staggered delays to each block animation
 gsap.to(".block", {
@@ -117,6 +118,19 @@ gsap.to(".image-4", {
   ],
   repeat: -1
 });
+
+// money icon on the pricing headline — same idle drift as the hero one
+if (document.querySelector(".image-money-pricing")) {
+  gsap.to(".image-money-pricing", {
+    keyframes: [
+      { x: "+=20", y: "-=10", rotation: "+=10", duration: 0.6, ease: "power1.inOut" },
+      { x: "+=10", y: "+=20", rotation: "+=10", duration: 0.6, ease: "power1.inOut" },
+      { x: "-=20", y: "+=10", rotation: "-=10", duration: 0.6, ease: "power1.inOut" },
+      { x: "-=10", y: "-=20", rotation: "-=10", duration: 0.6, ease: "power1.inOut" }
+    ],
+    repeat: -1
+  });
+}
 
 
 
@@ -200,16 +214,28 @@ if (pnlsTrack) {
   pnlsTrack.style.flexDirection = "row";
   pnlsTrack.style.flexWrap = "nowrap";
 
-  // Animate the track leftward, looping seamlessly
-  gsap.to(pnlsTrack, {
-    x: -totalWidth,
-    duration: panels.length * 2, // Adjust speed: 2 seconds per panel
+  // Animate the track leftward, looping seamlessly.
+  // Width math includes the flex GAP between panels (the old version measured
+  // bare widths, so the modulo wrap landed off-target and the loop stuttered).
+  const PANEL_GAP = 10;
+  const setWidth = () =>
+    panels.reduce((sum, el) => sum + el.getBoundingClientRect().width + PANEL_GAP, 0);
+
+  const pnlsLoop = gsap.to(pnlsTrack, {
+    x: () => -setWidth(),
+    duration: panels.length * 2, // 2 seconds per panel
     ease: "none",
     repeat: -1,
     modifiers: {
-      x: gsap.utils.unitize(x => parseFloat(x) % totalWidth)
+      x: gsap.utils.unitize(x => {
+        const w = setWidth();
+        return w ? parseFloat(x) % w : 0;
+      })
     }
   });
+
+  // re-measure once every image has its real size, so the loop stays exact
+  window.addEventListener("load", () => pnlsLoop.invalidate());
 
   // Hide overflow on container
   pnlsContainer.style.overflow = "hidden";

@@ -306,6 +306,9 @@ img {
 .block .paragraph,
 .block-5 .paragraph {
   color: var(--black);
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, .65),
+    0 1px 0 rgba(255, 255, 255, .3);
 }
 
 .paragraph {
@@ -373,6 +376,20 @@ img {
   box-shadow: inset 3px 3px #fff3, 7px 7px #000;
   align-items: center;
   justify-content: center;
+}
+
+/* glowy card text: dark cards get a real white bloom, light cards a crisp core */
+.block-2 .paragraph,
+.block-3 .paragraph {
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, .55),
+    0 0 12px rgba(255, 255, 255, .35),
+    0 0 26px rgba(255, 255, 255, .18);
+}
+.block-4 .paragraph-1 {
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, .65),
+    0 1px 0 rgba(255, 255, 255, .35);
 }
 
 .block-6 {
@@ -1529,7 +1546,16 @@ img {
 /* ─── clip program section ─────────────────────────────── */
 .section-8 {
   background-color: var(--black);
-  background-image: linear-gradient(180deg, #0000 60%, #e9edf214);
+  /* same backdrop as IS THIS YOU: background.jpg under a dark veil,
+     fixed parallax — plus section-8's own subtle bottom fade on top */
+  background-image:
+    linear-gradient(180deg, #0000 60%, #e9edf214),
+    linear-gradient(rgba(10, 10, 12, .84), rgba(10, 10, 12, .84)),
+    url("/assets/background.jpg");
+  background-size: auto, auto, cover;
+  background-position: 0 0, center, center;
+  background-repeat: no-repeat;
+  background-attachment: scroll, fixed, fixed;
   width: 100%;
   padding: 6rem 0 7rem;
   display: flex;
@@ -2190,5 +2216,288 @@ img {
   text-shadow:
     0 0 12px rgba(255, 255, 255, 0.25),
     0 0 35px rgba(255, 255, 255, 0.1);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   v7 TEXT SYSTEM — final word on typography
+   Solid heavy ink + press grain (lean SVG filter) + layered
+   cinematic glow + gold keyword accents. This block overrides
+   every legacy treatment above it.
+   ══════════════════════════════════════════════════════════════ */
+
+/* render quality: crisp hinting + subpixel AA everywhere */
+body {
+  text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: normal;
+}
+
+/* -- display headings: metallic gradient ink (steel / gold / purple) --
+      gradient-clipped fills; ALL glow comes from the filter halo —
+      text-shadow is forbidden here (it ghosts through clipped fills) -- */
+.text-block,
+.text-block-3,
+.text-block-copy,
+.text-block-copy-copy,
+.text-block-copy-copy-copy,
+.text-block-copy-copy-copy-copy,
+.text-block-copy-copy-copy-copy-copy {
+  background-color: transparent;
+  background-image: none;
+  -webkit-text-fill-color: transparent;
+  color: #fff;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-mask-image: none;
+  mask-image: none;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+  filter: url("#tfDistress");
+  font-stretch: 125%;
+  font-weight: 900;
+}
+
+/* brushed steel: dark top edge, hot white shine band, dark bottom edge */
+.text-block,
+.text-block-3,
+.text-block-copy {
+  background-image: linear-gradient(180deg, #c9d2da 0%, #eef3f8 34%, #ffffff 55%, #d9e2ea 76%, #a8b2bd 100%);
+}
+
+/* molten gold: hero brand "top floor" */
+.text-block-copy-copy {
+  background-image: linear-gradient(180deg, #a97b08 0%, #ffd22d 42%, #fff6c4 56%, #ffd22d 70%, #8a6506 100%);
+}
+
+/* royal purple: pricing headline + program heading */
+.text-block-copy-copy-copy,
+.text-block-copy-copy-copy-copy,
+.text-block-copy-copy-copy-copy-copy {
+  background-image: linear-gradient(180deg, #7a24c4 0%, #ae3cff 44%, #e7c2ff 58%, #ae3cff 74%, #5f1a9b 100%);
+}
+
+/* "IS THIS YOU?": white ink, NO glow AND no filter halo — flat-filter variant
+   keeps the print grain + knife scars but emits zero cloud around the letters */
+.text-block-3 {
+  background-image: none;
+  -webkit-text-fill-color: #ffffff;
+  color: #ffffff;
+  text-shadow: none;
+  filter: url("#tfDistressFlat");
+}
+
+/* "The Clip Program": back to white ink like the other display headings */
+.text-block-copy-copy-copy-copy-copy:not(.gold-punch) {
+  background-image: none;
+  -webkit-text-fill-color: #ffffff;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+/* money icon riding the pricing headline (same as hero) — filter-free so
+   GSAP's transform/rotation loop never re-rasterizes the knife-scar filter */
+.pricing-title-wrap {
+  position: relative;
+  display: inline-block;
+}
+/* heading must fill the wrap: legacy width:65% + shrink-to-fit wrapper
+   broke section centering and left the icon anchored to a phantom edge */
+.pricing-title-wrap .text-block-copy-copy-copy {
+  width: 100%;
+}
+.image-money-pricing {
+  position: absolute;
+  top: -40px;
+  right: -34px;
+  width: 110px;
+  z-index: 2;
+  pointer-events: none;
+}
+@media screen and (max-width: 767px) {
+  .image-money-pricing {
+    width: 64px;
+    top: -24px;
+    right: -18px;
+  }
+}
+
+/* hero brand "top floor": cinematic grey metal — dark gunmetal edges, pale
+   silver shine band sweeping the middle. Glow comes from the filter halo. */
+.text-block-copy-copy {
+  background-image: linear-gradient(180deg, #3d4348 0%, #9aa4ad 38%, #f2f6f9 54%, #9aa4ad 72%, #2f3438 100%);
+}
+
+/* gold punchline: metallic gold ink, filter halo does the bloom */
+.gold-punch {
+  background-image: linear-gradient(180deg, #a97b08 0%, #ffd22d 42%, #fff6c4 56%, #ffd22d 70%, #8a6506 100%) !important;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
+/* "you" in IS THIS YOU? — back to the ORIGINAL white-on-white gradient span */
+.text-span,
+.text-span:hover {
+  background-image: linear-gradient(#fff, #fff);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: none;
+}
+
+/* -- mid-size ink: NO filter (grain fogs small text) — crisp ink with
+      tight core glow + wide soft pass (depth) -- */
+.clip-step .clip-step-title,
+.title .text-block-4,
+.title .text-block-4-copy-copy,
+.title .text-block-4-copy-copy-copy {
+  filter: none;
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, 0.6),
+    0 0 10px rgba(255, 255, 255, 0.28),
+    0 0 26px rgba(255, 255, 255, 0.14);
+}
+
+/* -- body copy: gentle lift so ink never looks pasted on -- */
+.paragraph,
+.paragraph-2,
+.clip-step-desc,
+.clip-note,
+.social-handle,
+.link-block > div,
+.text-block-2,
+.clip-warning {
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, 0.35),
+    0 0 9px rgba(255, 255, 255, 0.16);
+}
+
+/* dark-ink contexts: no white halo (it would frost the letters).
+   Light cards (.block/.block-5) keep their crisp white-core glow from above. */
+.paragraph-1,
+.block-6 .paragraph {
+  text-shadow: none;
+}
+
+/* -- keyword accents -- */
+.hl {
+  color: #ffd22d;
+  -webkit-text-fill-color: #ffd22d;
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, 0.55),
+    0 0 12px rgba(255, 190, 25, 0.32),
+    0 0 30px rgba(255, 170, 10, 0.15);
+}
+
+.hl-white {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  font-weight: 900;
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, 0.55),
+    0 0 12px rgba(255, 255, 255, 0.28);
+}
+
+/* dark-ink variant for light cards */
+.hl-ink {
+  color: var(--black);
+  -webkit-text-fill-color: var(--black);
+  font-weight: 900;
+  text-shadow: none;
+}
+
+.hl-gold {
+  color: #ffd22d;
+  -webkit-text-fill-color: #ffd22d;
+  font-weight: 900;
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, 0.55),
+    0 0 12px rgba(255, 190, 25, 0.32),
+    0 0 30px rgba(255, 170, 10, 0.15);
+}
+
+.hl-red {
+  color: #ff4d4d;
+  -webkit-text-fill-color: #ff4d4d;
+  font-weight: 900;
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, 0.55),
+    0 0 12px rgba(255, 77, 77, 0.35),
+    0 0 30px rgba(255, 40, 40, 0.18);
+}
+
+/* pill context: gold base, gold keyword must win over .minititle .text-block-2 */
+.minititle .text-block-2 .hl-gold,
+.minititle-copy .text-block-2 .hl-gold {
+  color: #ffd22d;
+  -webkit-text-fill-color: #ffd22d;
+  font-weight: 900;
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, 0.55),
+    0 0 10px rgba(255, 190, 25, 0.3);
+}
+
+/* yellow feature paragraphs: white keyword variant must stay readable there */
+.paragraph-3 .hl-white,
+.paragraph-3 .hl-red {
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, 0.6),
+    0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* "you" hover handled by the purple metallic rule above (no shadow on clipped fills) */
+
+/* pricing numerals: gold + white-core shine on the purple card, ink on the light card */
+.div-block-2 .text-span-2 {
+  color: #ffd22d;
+  -webkit-text-fill-color: #ffd22d;
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, 0.5),
+    0 0 16px rgba(255, 190, 25, 0.35),
+    0 0 40px rgba(255, 170, 10, 0.15);
+}
+.div-block-2-copy .text-span-2 {
+  color: var(--black);
+  -webkit-text-fill-color: var(--black);
+  text-shadow: none;
+}
+
+/* step numerals: white core + deep warm bloom */
+.clip-step .clip-num {
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, 0.5),
+    0 0 14px rgba(255, 190, 25, 0.35),
+    0 0 36px rgba(255, 170, 10, 0.16);
+}
+
+/* minititle pills: gold ink already; add bloom for weight */
+.minititle .text-block-2,
+.minititle-copy .text-block-2 {
+  text-shadow:
+    0 0 1px rgba(255, 210, 45, 0.45),
+    0 0 10px rgba(255, 190, 25, 0.28);
+}
+
+/* feature descriptions keep yellow ink; hl spans inside pop brighter */
+.paragraph-3 .hl-white {
+  letter-spacing: .5px;
+}
+
+/* ═══ mobile guard: SVG filters off on small screens (perf + clarity) ═══ */
+@media screen and (max-width: 767px) {
+  .text-block,
+  .text-block-3,
+  .text-block-copy,
+  .text-block-copy-copy,
+  .text-block-copy-copy-copy,
+  .text-block-copy-copy-copy-copy,
+  .text-block-copy-copy-copy-copy-copy,
+  .clip-step .clip-step-title,
+  .title .text-block-4,
+  .title .text-block-4-copy-copy,
+  .title .text-block-4-copy-copy-copy {
+    filter: none;
+  }
 }
 
