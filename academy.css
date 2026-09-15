@@ -1,0 +1,444 @@
+/* ═══════════════════════════════════════════════════════════════
+   TOP FLOOR ACADEMY — reference (localhost:5920) layout
+   + Top Floor v7 text system (metallic ink, knife-cut grain, glow)
+   ═══════════════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: 'Archivo';
+  src: url('/assets/Archivo.ttf') format('truetype');
+  font-weight: 100 900;
+  font-stretch: 50% 200%;
+  font-display: swap;
+}
+
+:root {
+  --ink: #0d0d10;
+  --paper: #f5f1e8;
+  --gold: #ffb700;
+  --purple: #6a2bd9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* scroll-behavior stays default: Lenis drives smoothing per-frame;
+   CSS smooth-behavior would double-smooth every frame and lag the glide */
+
+body {
+  font-family: 'Archivo', 'Arial Black', sans-serif;
+  background: var(--ink);
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: inline-block; }
+
+/* ── v7 display ink ─────────────────────────────────────────── */
+.tf-display {
+  font-family: 'Archivo', 'Arial Black', sans-serif;
+  font-weight: 900;
+  font-stretch: 125%;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  -webkit-text-stroke: 0;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  filter: url(#tfDistress);
+}
+
+/* metallic gradient ink (hero — brushed steel) */
+.hero-heading {
+  background-image: linear-gradient(105deg, #3d4348 0%, #9aa4ad 28%, #f2f6f9 46%, #9aa4ad 62%, #3d4348 100%);
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1em;
+}
+
+.tf-h1-accent {
+  background-image: linear-gradient(105deg, #3c0d6e 0%, #8a2be2 30%, #e9d5ff 48%, #8a2be2 66%, #3c0d6e 100%);
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* purple metallic (mentors heading) */
+.mentors .section-heading {
+  background-image: linear-gradient(105deg, #3c0d6e 0%, #8a2be2 30%, #f2e8ff 48%, #8a2be2 66%, #3c0d6e 100%);
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ── hero heading: quiet luxury ───────────────────────────────
+   Champagne-ivory ink with a soft violet counter-line, editorial
+   scale, one faint halo via drop-shadow (paints outside the glyph
+   silhouette — no ghosting on clipped text). The backdrop carries
+   the drama; the type stays composed. */
+.hero-heading {
+  font-family: Jpbgm, 'Archivo', 'Arial Black', sans-serif;
+  font-stretch: 118%;
+  font-size: clamp(3.2rem, 8.5vw, 7.5rem);
+  letter-spacing: 0.01em;
+  line-height: 1.02;
+  gap: 0.14em;
+  filter: drop-shadow(0 0 22px rgba(233, 226, 210, 0.16));
+  text-shadow: none;
+}
+
+.hero-heading .tf-h1-line {
+  background-image: linear-gradient(100deg, #7d7566 0%, #cfc6b4 30%, #f4efe4 47%, #cfc6b4 63%, #7d7566 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: none;
+}
+
+.hero-heading .tf-h1-accent {
+  font-size: 0.44em;
+  font-stretch: 100%;
+  letter-spacing: 0.58em;
+  margin-right: -0.58em; /* recenter the tracked caps */
+  background-image: linear-gradient(100deg, #4b3a72 0%, #8f7bb8 32%, #d9d0ea 50%, #8f7bb8 68%, #4b3a72 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: none;
+}
+
+/* ── mentors heading: artful ink ──────────────────────────────
+   Restrained editorial treatment: matte flat fill, hairline edge,
+   deep cinematic drop. No glow rings, no neon. */
+.mentors .section-heading {
+  filter: none;
+  background-image: none;
+  background-clip: border-box;
+  letter-spacing: 0.04em;
+  -webkit-text-fill-color: #cfc9bd;
+  color: #cfc9bd;
+  text-shadow:
+    0 1px 0 rgba(235, 228, 214, 0.22),
+    0 20px 50px rgba(0, 0, 0, 0.88),
+    0 6px 22px rgba(0, 0, 0, 0.5),
+    0 0 80px rgba(180, 150, 110, 0.09);
+}
+
+.tf-ember-span {
+  background-image: none;
+  -webkit-text-fill-color: #d9a05b;
+  color: #d9a05b;
+  text-shadow:
+    0 1px 0 rgba(245, 220, 180, 0.22),
+    0 0 34px rgba(214, 148, 62, 0.16);
+}
+
+/* (gold-span removed with the benefits section) */
+
+/* (stale text-shadow:none guard removed — cinematic headings now use
+   solid fills, so shadows paint cleanly behind them) */
+
+.section-heading {
+  font-size: clamp(2.2rem, 5.2vw, 4.2rem);
+  line-height: 1.02;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.minititle {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.45em;
+  color: var(--gold);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* ── navbar ─────────────────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 1rem 2rem;
+  background: rgba(13, 13, 16, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.container-navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand-link img { transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+.brand-link:hover img { transform: rotate(-8deg) scale(1.06); }
+
+.options { display: flex; gap: 1.6rem; align-items: center; }
+
+.social-group { display: flex; align-items: center; gap: 0.45rem; }
+
+.social-name {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.social-icon {
+  display: flex;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s, filter 0.3s, transform 0.3s;
+}
+.social-icon svg { fill: currentColor; display: block; }
+.social-icon:hover {
+  color: #fff;
+  filter: drop-shadow(0 0 8px rgba(255, 183, 0, 0.65));
+  transform: translateY(-1px);
+}
+
+.link-block div {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.3s, text-shadow 0.3s;
+}
+.link-block:hover div {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 183, 0, 0.55), 0 0 20px rgba(255, 183, 0, 0.3);
+}
+
+.cta-button {
+  background: var(--gold);
+  color: #0d0d10;
+  font-weight: 900;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.4rem;
+  border: 2px solid #000;
+  box-shadow: inset 3px 3px rgba(255, 255, 255, 0.45), 4px 4px 0 #000, 0 0 24px rgba(255, 183, 0, 0.45);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s;
+}
+.cta-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: inset 3px 3px rgba(255, 255, 255, 0.45), 6px 6px 0 #000, 0 0 36px rgba(255, 183, 0, 0.65);
+}
+.cta-button.big { font-size: 1.05rem; padding: 0.9rem 2rem; }
+
+.ghost-button {
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.ghost-button:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 26px rgba(255, 183, 0, 0.35);
+  transform: translate(-2px, -2px);
+}
+
+/* ── hero ───────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 7rem 1.5rem 4rem;
+  background:
+    radial-gradient(120% 90% at 50% 42%, rgba(10, 10, 12, 0) 0%, rgba(10, 10, 12, 0.5) 72%, rgba(7, 7, 9, 0.93) 100%),
+    linear-gradient(180deg, rgba(10, 10, 12, 0.72), rgba(10, 10, 12, 0.72)),
+    url('/assets/topfloor-2.jpg') center/cover fixed;
+}
+
+.hero-inner {
+  max-width: 980px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.hero-heading {
+  font-size: clamp(3.2rem, 8.5vw, 7.5rem);
+  line-height: 1.08;
+}
+
+.hero-sub {
+  max-width: 620px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.hero-sub .hl {
+  color: var(--gold);
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(255, 183, 0, 0.5), 0 0 28px rgba(255, 183, 0, 0.25);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.6rem;
+}
+
+.hero-money-row { position: relative; height: 0; }
+.hero-money {
+  position: absolute;
+  top: -170px;
+  right: 40px;
+  filter: drop-shadow(0 0 18px rgba(255, 183, 0, 0.55));
+  pointer-events: none;
+}
+
+/* ── mentors ────────────────────────────────────────────────── */
+.mentors {
+  padding: 6rem 1.5rem;
+  background:
+    radial-gradient(120% 90% at 50% 45%, rgba(10, 10, 12, 0) 0%, rgba(10, 10, 12, 0.55) 72%, rgba(7, 7, 9, 0.93) 100%),
+    linear-gradient(180deg, rgba(10, 10, 12, 0.84), rgba(10, 10, 12, 0.84)),
+    url('/assets/topfloor-2.jpg') center/cover fixed;
+}
+
+.mentors-grid {
+  max-width: 760px;
+  margin: 3rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.mentor-card {
+  background: #17171b;
+  border: 2px solid #000;
+  padding: 2.2rem 1.5rem;
+  text-align: center;
+  box-shadow: inset 3px 3px rgba(255, 255, 255, 0.06), 7px 7px 0 #000, 0 0 30px rgba(138, 43, 226, 0.15);
+}
+
+.mentor-pfp {
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  box-shadow: 0 0 22px rgba(255, 183, 0, 0.4);
+  margin-bottom: 1.2rem;
+}
+
+.mentor-name {
+  font-size: 1.4rem;
+  font-weight: 900;
+  font-stretch: 115%;
+  text-transform: uppercase;
+  text-shadow: 1px 0 0 rgba(255,255,255,0.9), 0 0 8px rgba(255, 255, 255, 0.35);
+}
+
+.mentor-role {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0.4rem 0 1rem;
+}
+
+.mentor-link div {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.3s, text-shadow 0.3s;
+}
+.mentor-link:hover div {
+  color: var(--gold);
+  text-shadow: 0 0 10px rgba(255, 183, 0, 0.5);
+}
+
+.mentors-note {
+  text-align: center;
+  margin-top: 2.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: monospace;
+}
+
+/* ── footer ─────────────────────────────────────────────────── */
+.footer {
+  padding: 3rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: #0a0a0c;
+}
+
+.footer-data {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.socials { display: flex; gap: 1.5rem; }
+
+.social-pair {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.3s, text-shadow 0.3s;
+}
+.social-pair:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 183, 0, 0.5);
+}
+
+/* ── mobile ─────────────────────────────────────────────────── */
+@media screen and (max-width: 991px) {
+  .mentors-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-money { top: -150px; right: 10px; }
+}
+
+@media screen and (max-width: 767px) {
+  .options { display: none; }
+  .mentors-grid { grid-template-columns: 1fr; }
+  .hero-money { width: 64px; top: -110px; right: 4px; }
+  .cta-button.big, .ghost-button { width: 100%; text-align: center; }
+  /* grain filters are wasted at small sizes — drop them for perf */
+  .tf-display { filter: none; }
+}
+
+@media screen and (max-width: 479px) {
+  .hero-heading { font-size: clamp(2.8rem, 12vw, 4.2rem); }
+  .section-heading { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+}

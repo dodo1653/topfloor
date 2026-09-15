@@ -1,13 +1,12 @@
 // Lenis smooth scrolling, driven by GSAP's ticker so ScrollTrigger stays in sync
-// (native touch scrolling on phones — Lenis sync makes mobile feel rubber-bandy)
+// Lerp mode (not duration mode): input responds immediately, position catches
+// up exponentially — instant feel, velvet glide. Native touch on phones.
 const lenis = new Lenis({
-  duration: 2.4,
-  easing: (t) => 1 - Math.pow(1 - t, 4),
+  lerp: 0.115,
   smoothWheel: true,
   syncTouch: false,
-  wheelMultiplier: 0.6,
-  touchMultiplier: 0.8,
-  lerp: null,
+  wheelMultiplier: 1.05,
+  touchMultiplier: 1.4,
 });
 lenis.on('scroll', ScrollTrigger.update);
 gsap.ticker.add((time) => {
@@ -28,7 +27,7 @@ window.addEventListener('orientationchange', () => {
   if (window.ScrollTrigger) ScrollTrigger.refresh();
 });
 
-// Anchor links glide through Lenis instead of jumping — slow cinematic scroll
+// Anchor links glide through Lenis instead of jumping — quick, weighty glide
 const anchors = document.querySelectorAll('a[href^="#"]');
 anchors.forEach((a) => {
   a.addEventListener('click', (e) => {
@@ -37,8 +36,8 @@ anchors.forEach((a) => {
       e.preventDefault();
       lenis.scrollTo(id, {
         offset: -80,
-        duration: 2.8,
-        easing: (t) => 1 - Math.pow(1 - t, 3)
+        duration: 1.4,
+        easing: (t) => 1 - Math.pow(2, -10 * t)
       });
     }
   });
@@ -105,6 +104,18 @@ gsap.to(".block-5", {
   },
   ease: "none",
   delay: 0.8
+});
+
+gsap.to(".block-6", {
+  yPercent: isSmallScreen ? -750 : -3750,
+  scrollTrigger: {
+    trigger: ".section-2",
+    start: "top bottom",
+    end: "bottom top",
+    scrub: true,
+  },
+  ease: "none",
+  delay: 1
 });
 
 // Magnifying glass spiral "scanning" animation on loop (no initial jump)
