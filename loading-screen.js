@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   tl.to(backdrop, { opacity: 0.1, duration: 0.7, ease: "power2.out" }, 0)
-    .to({}, { duration: 0.45 }) // quiet hold
+    .to({}, { duration: 1.95 }) // quiet hold (+1.5s — let the welcome breathe)
     .to(backdrop, { opacity: 0, duration: 0.35, ease: "power1.in" }, ">")
     .to(loadingScreen, { y: "-100%", duration: 0.6, ease: "power2.inOut" }, ">-0.05");
 });

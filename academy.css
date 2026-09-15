@@ -14,7 +14,7 @@
 :root {
   --ink: #0d0d10;
   --paper: #f5f1e8;
-  --gold: #ffb700;
+  --gold: #d9dee5; /* now shiny silver — same role, cooler tone */
   --purple: #6a2bd9;
 }
 
@@ -138,16 +138,17 @@ img { max-width: 100%; display: inline-block; }
     0 0 80px rgba(180, 150, 110, 0.09);
 }
 
+/* (gold-span removed with the benefits section) */
+
+/* silver-edged accent: was ember-gold, now a bright silver glint */
 .tf-ember-span {
   background-image: none;
-  -webkit-text-fill-color: #d9a05b;
-  color: #d9a05b;
+  -webkit-text-fill-color: #eef1f5;
+  color: #eef1f5;
   text-shadow:
-    0 1px 0 rgba(245, 220, 180, 0.22),
-    0 0 34px rgba(214, 148, 62, 0.16);
+    0 1px 0 rgba(255, 255, 255, 0.35),
+    0 0 34px rgba(200, 212, 228, 0.22);
 }
-
-/* (gold-span removed with the benefits section) */
 
 /* (stale text-shadow:none guard removed — cinematic headings now use
    solid fills, so shadows paint cleanly behind them) */
@@ -211,7 +212,7 @@ img { max-width: 100%; display: inline-block; }
 .social-icon svg { fill: currentColor; display: block; }
 .social-icon:hover {
   color: #fff;
-  filter: drop-shadow(0 0 8px rgba(255, 183, 0, 0.65));
+  filter: drop-shadow(0 0 8px rgba(214, 222, 232, 0.65));
   transform: translateY(-1px);
 }
 
@@ -225,7 +226,7 @@ img { max-width: 100%; display: inline-block; }
 }
 .link-block:hover div {
   color: #fff;
-  text-shadow: 0 0 8px rgba(255, 183, 0, 0.55), 0 0 20px rgba(255, 183, 0, 0.3);
+  text-shadow: 0 0 8px rgba(214, 222, 232, 0.55), 0 0 20px rgba(214, 222, 232, 0.3);
 }
 
 .cta-button {
@@ -237,12 +238,12 @@ img { max-width: 100%; display: inline-block; }
   text-transform: uppercase;
   padding: 0.65rem 1.4rem;
   border: 2px solid #000;
-  box-shadow: inset 3px 3px rgba(255, 255, 255, 0.45), 4px 4px 0 #000, 0 0 24px rgba(255, 183, 0, 0.45);
+  box-shadow: inset 3px 3px rgba(255, 255, 255, 0.45), 4px 4px 0 #000, 0 0 24px rgba(214, 222, 232, 0.45);
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s;
 }
 .cta-button:hover {
   transform: translate(-2px, -2px);
-  box-shadow: inset 3px 3px rgba(255, 255, 255, 0.45), 6px 6px 0 #000, 0 0 36px rgba(255, 183, 0, 0.65);
+  box-shadow: inset 3px 3px rgba(255, 255, 255, 0.45), 6px 6px 0 #000, 0 0 36px rgba(214, 222, 232, 0.65);
 }
 .cta-button.big { font-size: 1.05rem; padding: 0.9rem 2rem; }
 
@@ -258,7 +259,7 @@ img { max-width: 100%; display: inline-block; }
 }
 .ghost-button:hover {
   border-color: var(--gold);
-  box-shadow: 0 0 26px rgba(255, 183, 0, 0.35);
+  box-shadow: 0 0 26px rgba(214, 222, 232, 0.35);
   transform: translate(-2px, -2px);
 }
 
@@ -301,7 +302,7 @@ img { max-width: 100%; display: inline-block; }
 .hero-sub .hl {
   color: var(--gold);
   font-weight: 800;
-  text-shadow: 0 0 10px rgba(255, 183, 0, 0.5), 0 0 28px rgba(255, 183, 0, 0.25);
+  text-shadow: 0 0 10px rgba(214, 222, 232, 0.5), 0 0 28px rgba(214, 222, 232, 0.25);
 }
 
 .hero-actions {
@@ -317,7 +318,7 @@ img { max-width: 100%; display: inline-block; }
   position: absolute;
   top: -170px;
   right: 40px;
-  filter: drop-shadow(0 0 18px rgba(255, 183, 0, 0.55));
+  filter: drop-shadow(0 0 18px rgba(214, 222, 232, 0.55));
   pointer-events: none;
 }
 
@@ -349,7 +350,7 @@ img { max-width: 100%; display: inline-block; }
 .mentor-pfp {
   border-radius: 50%;
   border: 3px solid var(--gold);
-  box-shadow: 0 0 22px rgba(255, 183, 0, 0.4);
+  box-shadow: 0 0 22px rgba(214, 222, 232, 0.4);
   margin-bottom: 1.2rem;
 }
 
@@ -378,7 +379,7 @@ img { max-width: 100%; display: inline-block; }
 }
 .mentor-link:hover div {
   color: var(--gold);
-  text-shadow: 0 0 10px rgba(255, 183, 0, 0.5);
+  text-shadow: 0 0 10px rgba(214, 222, 232, 0.5);
 }
 
 .mentors-note {
@@ -420,7 +421,7 @@ img { max-width: 100%; display: inline-block; }
 }
 .social-pair:hover {
   color: #fff;
-  text-shadow: 0 0 10px rgba(255, 183, 0, 0.5);
+  text-shadow: 0 0 10px rgba(214, 222, 232, 0.5);
 }
 
 /* ── mobile ─────────────────────────────────────────────────── */
